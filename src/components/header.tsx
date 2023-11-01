@@ -17,7 +17,7 @@ const Header = () => {
                 </div>
             </button>
             <AnimatePresence mode="wait">
-                {/* {isActive && <Nav />} */}
+                {isActive && <Navigation />}
             </AnimatePresence>
         </>
     );
