@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/gsap": "^3.0.0",
     "geist": "^1.0.0",
+    "gsap": "^3.12.2",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18"
