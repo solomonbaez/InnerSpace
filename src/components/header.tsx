@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AnimatePresence } from "framer-motion"
-import Navigation from "@/components/navigation"
+import Menu from "@/components/menu"
+// import Navigation from "@/components/navigation"
 
 export default function Index() {
     const [isActive, setIsActive] = useState(false);
@@ -16,9 +17,10 @@ export default function Index() {
                     <div className={`h-0.5 rounded-lg mt-3 block bg-white relative transform transition-transform ${isActive ? "-rotate-45 -top-3 duration-300 ease-in-out" : ""}`}></div>
                 </div>
             </button>
-            <AnimatePresence mode="wait">
-                {isActive && <Navigation />}
-            </AnimatePresence>
+            {/* <AnimatePresence mode="wait"> */}
+                {/* {isActive && <Navigation />} */}
+            {/* </AnimatePresence> */}
+            <Menu isActive={isActive} />
         </>
     );
 };
