@@ -2,13 +2,13 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { slide, scale } from '@/components/animation';
 
-export default function Index({data, isActive, setSelectedIndicator}) {
+export default function Index({data, isActive, setIndicator}) {
     const { title, href, index} = data;
   
     return (
       <motion.div 
         className="relative flex items-center"
-        onMouseEnter={() => {setSelectedIndicator(href)}} 
+        onMouseEnter={() => {setIndicator(href)}} 
         custom={index} 
         variants={slide} 
         initial="initial" 

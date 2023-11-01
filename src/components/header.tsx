@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <>
             <button
-            className="fixed top-10 right-10 z-20 w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center transform transition-transform"
+            className="fixed top-10 right-10 z-20 w-20 h-20 flex items-center justify-center transform transition-transform"
             onClick={() => setIsActive(!isActive)}
             >
                 <div className={`w-14 transition-transform transform translate-y-0 ${isActive ? "translate-y-1 origin-center duration-300" : ""}`}>

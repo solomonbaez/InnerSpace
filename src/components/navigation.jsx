@@ -28,27 +28,27 @@ export default function Navigation() {
         <motion.div variants={menuSlide} initial="initial" animate="enter" exit="exit"
                     className="h-screen bg-slate-800 top-0 right-0"
         >
-            <div onMouseLeave={() => {setIndicator(pathname)}} className="flex flex-col text-6xl gap-3 mt-20">
-            <div className="box-border h-full p-96 flex-col justify-between">
-                <div className="flex-col text-6xl gap-3 mt-20">
-                    <p>NAVIGATION</p>
+            <div key="body" className="box-border h-full p-24 flex flex-col justify-between">
+                <div key="nav" onMouseLeave={() => {setIndicator(pathname)}} className="flex flex-col text-6xl gap-3 mt-20">
+                    <div key="header" className="text-neutral-500 border-b-neutral-500 uppercase text-12 mb-10">
+                        <p>Navigation</p> 
+                    </div>
+                    {
+                        navigationComponents.map( (data, index) => {
+                            return <Link key={index}
+                                         data={{...data, index}}
+                                         isActive={indicator === data.href}
+                                         setIndicator={setIndicator} 
+                                    />
+                        })
+                    }
                 </div>
-            {
-                navigationComponents.map( (data, index) => {
-                    return <Link key={index}
-                                 data={{...data, index}}
-                                 isActive={indicator == data.href}
-                                 setIndicator={setIndicator} 
-                            />
-                })
-            }
-            <div className="flex w-full justify-between text-12 gap-10">
-                <a>GITHUB</a>
-                <a>VERCEL</a>
-                <a>LINKEDIN</a>
+                <div key="footer" className="flex w-full justify-between text-12 gap-10">
+                    <a href="https://github.com/solomonbaez" className="font-light text-white">Github</a>
+                    <a href="https://inner-space-five.vercel.app/" className="font-light text-white">Vercel</a>
+                    <a href="https://linkedin.com/in/solomonbaez" className="font-light text-white">LinkedIn</a>
+                </div>
             </div>
-            </div>
-        </div>
         </motion.div>
     )
 }
