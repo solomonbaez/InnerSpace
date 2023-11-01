@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
+import Header from "@/components/header"
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -7,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home: React.FC = () => {
   useEffect(() => {
-    let sections = gsap.utils.toArray<HTMLElement>("div"),
+    let sections = gsap.utils.toArray<HTMLElement>("section"),
       currentSection = sections[0];
 
     gsap.defaults({overwrite: 'auto', duration: 0.3});
@@ -45,12 +47,17 @@ const Home: React.FC = () => {
 
   return (
     <main>
+      <Header />
+      <section>
       <div className="h-screen w-screen flex items-center justify-center">
-        <h1 className="hover:text-blue-300">Hi, I&apos;m Solomon!</h1>
+        <h1 className="hover:text-purple-300">Hi, I&apos;m Solomon!</h1>
       </div>
+      </section>
+      <section>
       <div className="h-screen w-screen flex items-center justify-center">
         <h1>This is my portfolio 🌘</h1>
       </div>
+      </section>
     </main>
   )
 }
