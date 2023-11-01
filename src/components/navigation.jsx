@@ -3,7 +3,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { menuSlide } from "@/components/animation";
-import { Link } from "@/components/link";
+import Link from "@/components/link";
 
 const navigationComponents = [
     {
@@ -28,6 +28,7 @@ export default function Navigation() {
         <motion.div variants={menuSlide} initial="initial" animate="enter" exit="exit"
                     className="h-screen bg-slate-800 top-0 right-0"
         >
+            <div onMouseLeave={() => {setIndicator(pathname)}} className="flex flex-col text-6xl gap-3 mt-20">
             <div className="box-border h-full p-96 flex-col justify-between">
                 <div className="flex-col text-6xl gap-3 mt-20">
                     <p>NAVIGATION</p>
@@ -36,7 +37,7 @@ export default function Navigation() {
                 navigationComponents.map( (data, index) => {
                     return <Link key={index}
                                  data={{...data, index}}
-                                 isActive={indicator = data.href}
+                                 isActive={indicator == data.href}
                                  setIndicator={setIndicator} 
                             />
                 })
@@ -47,6 +48,7 @@ export default function Navigation() {
                 <a>LINKEDIN</a>
             </div>
             </div>
+        </div>
         </motion.div>
     )
 }
