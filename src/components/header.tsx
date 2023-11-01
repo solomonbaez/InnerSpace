@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AnimatePresence } from "framer-motion"
 import Navigation from "@/components/navigation"
 
-const Header = () => {
+export default function Index() {
     const [isActive, setIsActive] = useState(false);
 
     return (
@@ -12,8 +12,8 @@ const Header = () => {
             onClick={() => setIsActive(!isActive)}
             >
                 <div className={`w-14 transition-transform transform translate-y-0 ${isActive ? "translate-y-1 origin-center duration-300" : ""}`}>
-                    <div className={`h-0.5 block bg-white relative transform transition-transform ${isActive ? "rotate-45 top-0.5 duration-300 ease-in-out" : ""}`}></div>
-                    <div className={`h-0.5 mt-3 block bg-white relative transform transition-transform ${isActive ? "-rotate-45 -top-3 duration-300 ease-in-out" : ""}`}></div>
+                    <div className={`h-0.5 rounded-lg block bg-white relative transform transition-transform ${isActive ? "rotate-45 top-0.5 duration-300 ease-in-out" : ""}`}></div>
+                    <div className={`h-0.5 rounded-lg mt-3 block bg-white relative transform transition-transform ${isActive ? "-rotate-45 -top-3 duration-300 ease-in-out" : ""}`}></div>
                 </div>
             </button>
             <AnimatePresence mode="wait">
@@ -22,5 +22,3 @@ const Header = () => {
         </>
     );
 };
-
-export default Header;

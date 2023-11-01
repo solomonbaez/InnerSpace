@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { menuSlide } from "@/components/animation";
 import Link from "@/components/link";
+import Curve from "@/components/curve";
 
 const navigationComponents = [
     {
@@ -20,13 +21,13 @@ const navigationComponents = [
     }
 ]
 
-export default function Navigation() {
+export default function Index() {
     const pathname = usePathname();
     const [indicator, setIndicator] = useState(pathname)
 
     return (
         <motion.div variants={menuSlide} initial="initial" animate="enter" exit="exit"
-                    className="h-screen bg-slate-800 top-0 right-0"
+                    className="h-screen bg-neutral-800 top-0 right-0"
         >
             <div key="body" className="box-border h-full p-24 flex flex-col justify-between">
                 <div key="nav" onMouseLeave={() => {setIndicator(pathname)}} className="flex flex-col text-6xl gap-3 mt-20">
@@ -49,6 +50,7 @@ export default function Navigation() {
                     <a href="https://linkedin.com/in/solomonbaez" className="font-light text-white">LinkedIn</a>
                 </div>
             </div>
+            <Curve />
         </motion.div>
     )
 }
