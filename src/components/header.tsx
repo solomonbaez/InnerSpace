@@ -1,8 +1,13 @@
-import React, { forwardRef } from 'react';
+import React, { ForwardedRef, forwardRef } from 'react';
 import Diamond from "@/components/diamond"
 import MagneticGSAP from "@/components/magneticGSAP"
 
-const Header = forwardRef( function index(props, ref) {
+interface HeaderProps {
+  isActive: boolean;
+  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header = forwardRef<HTMLButtonElement, HeaderProps>(function Index(props: HeaderProps, ref) {
     const { isActive, setIsActive } = props;
 
     return (

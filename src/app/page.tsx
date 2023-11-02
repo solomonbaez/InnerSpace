@@ -17,7 +17,7 @@ interface Dimensions {
 }
 
 const Home: React.FC = () => {
-  const cursorElement = useRef<HTMLDivElement>(null);
+  const reactiveElement = useRef<HTMLButtonElement>(null);
 
   const [isActive, setIsActive] = useState<boolean>(false);
   const [transition, setTransition] = useState<boolean>(false);
@@ -90,9 +90,9 @@ const Home: React.FC = () => {
 
   return (
     <main>
-      <Header ref={cursorElement} isActive={isActive} setIsActive={setIsActive}/>
+      <Header ref={reactiveElement} isActive={isActive} setIsActive={setIsActive}/>
       <Menu isActive={isActive} />
-      <ReactiveCursor reactiveElement={cursorElement}/>
+      <ReactiveCursor reactiveElement={reactiveElement}/>
       
       <AnimatePresence>
         { transition && dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
