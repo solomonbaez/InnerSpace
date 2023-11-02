@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "@/components/header"
 import Menu from "@/components/menu"
 import PixelTransition from "@/components/pixelTransition"
+import ReactiveCursor from "@/components/reactiveCursor"
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -16,6 +17,8 @@ interface Dimensions {
 }
 
 const Home: React.FC = () => {
+  const reactiveElement = useRef<HTMLElement>(null);
+
   const [isActive, setIsActive] = useState<boolean>(false);
   const [transition, setTransition] = useState<boolean>(false);
   const [dimensions, setDimensions] = useState<Dimensions>({width: 0, height: 0});
@@ -89,6 +92,7 @@ const Home: React.FC = () => {
     <main>
       <Header isActive={isActive} setIsActive={setIsActive}/>
       <Menu isActive={isActive} />
+      <ReactiveCursor reactiveElement={reactiveElement}/>
       
       <AnimatePresence>
         { transition && dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
