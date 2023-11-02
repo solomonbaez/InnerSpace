@@ -28,15 +28,27 @@ export default function Index({isActive, dimensions}) {
     return a;
   }
 
+  const pixelColors = [
+    "bg-neutral-800",
+    "bg-neutral-900",
+    "bg-neutral-700"
+  ]
+  const getRandomColor = () => {
+    const randomIndex = Math.floor(Math.random() * pixelColors.length);
+    return pixelColors[randomIndex]
+  }
+
   const generateGrid = () => {
     const { innerWidth, innerHeight } = window;
-    const elementSize = innerWidth * 0.05;
+    const elementSize = innerWidth * 0.025;
     const elementCount = Math.ceil(innerHeight / elementSize);
     const shuffled = shuffle([...Array(elementCount)].map( (_, i) => i ))
+
     return shuffled.map( (randomElement, index) => {
+      const bgColor = getRandomColor();
       return (
         <motion.div key={index}
-          className="w-full h-[5vw] bg-neutral-700"
+          className={`w-full h-[5vw] ${bgColor} bg-`}
           variants={animate} initial="initial"
           animate={isActive ? "open" : "closed"}
           custom={randomElement}
@@ -48,9 +60,9 @@ export default function Index({isActive, dimensions}) {
   return (
     <div className="flex overflow-hidden relative z-10 pointer-events-none">
       {
-        [...Array(20)].map( (_, index) => {
+        [...Array(40)].map( (_, index) => {
           return (
-            <div key={index} className="w-[5vw] flex flex-col">
+            <div key={index} className="w-[2.5vw] flex flex-col">
               { generateGrid() }
             </div>
           )
