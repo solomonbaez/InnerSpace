@@ -1,13 +1,53 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "@/components/header"
+import Menu from "@/components/menu"
+import PixelTransition from "@/components/pixelTransition"
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { AnimatePresence } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
+interface Dimensions {
+  width: number,
+  height: number,
+}
+
 const Home: React.FC = () => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const [transition, setTransition] = useState<boolean>(false);
+  const [dimensions, setDimensions] = useState<Dimensions>({width: 0, height: 0});
+  const updateDimensions = () => {
+    const { innerWidth, innerHeight } = window;
+    setDimensions({width: innerWidth, height: innerHeight});
+  }
+
+  useEffect(() => {
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => {
+      window.removeEventListener("resize", updateDimensions)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isActive) {
+      setTransition(isActive)
+    } else {
+      const transitionTimeout = setTimeout(() => {
+        setTransition(isActive)
+      }, 900);
+
+      return () => {
+        clearTimeout(transitionTimeout)
+      };
+    }
+
+  }, [isActive, transition])
+
+
   useEffect(() => {
     let sections = gsap.utils.toArray<HTMLElement>("section"),
       currentSection = sections[0];
@@ -47,10 +87,16 @@ const Home: React.FC = () => {
 
   return (
     <main>
-      <Header />
+      <Header isActive={isActive} setIsActive={setIsActive}/>
+      <Menu isActive={isActive} />
+      
+      <AnimatePresence>
+        { transition && dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
+      </AnimatePresence>
+      
       <section>
       <div className="h-screen w-screen flex items-center justify-center">
-        <h1 className="hover:text-purple-300">Hi, I&apos;m Solomon!</h1>
+        <h1 className={isActive ? "opacity-0" : "transition-opacity opacity-100 ease-in duration-600 hover:text-purple-300"}>Hi, I&apos;m Solomon!</h1>
       </div>
       </section>
       <section>
