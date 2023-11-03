@@ -29,9 +29,9 @@ export default function Index({isActive, dimensions}) {
   }
 
   const pixelColors = [
-    "bg-gray-400",
-    "bg-gray-300",
-    "bg-gray-200",
+    "pink-400",
+    "green-300",
+    "blue-200",
   ]
   const getRandomColor = () => {
     const randomIndex = Math.floor(Math.random() * pixelColors.length);
@@ -48,7 +48,7 @@ export default function Index({isActive, dimensions}) {
       const bgColor = getRandomColor();
       return (
         <motion.div key={index}
-          className={`w-full h-[5vw] ${bgColor} bg-`}
+          className={`w-full h-[5vw] bg-purple-300`}
           variants={animate} initial="initial"
           animate={isActive ? "open" : "closed"}
           custom={randomElement}
