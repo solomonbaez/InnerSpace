@@ -6,16 +6,15 @@ const animate = {
   },
   open: (i) => ({
     opacity: 1,
-    transition: {duration: 0, delay: 0.03 * i}
+    transition: {duration: 0.5, delay: 0.03 * i}
   }),
   closed: (i) => ({
     opacity: 0,
-    transition: {duration: 0, delay: 0.03 * i}
+    transition: {duration: 0.5, delay: 0.03 * i}
   })
 };
 
 export default function Index({isActive, dimensions}) {
-  const { width, height } = dimensions;
   const shuffle = (a) => {
     var i, r, previous
     for (i = a.length - 1; i > 0; i--) {
@@ -58,11 +57,11 @@ export default function Index({isActive, dimensions}) {
   }
 
   return (
-    <div className="flex overflow-hidden relative z-10 pointer-events-none">
+    <div className="flex relative pointer-events-none bg-transparent">
       {
         [...Array(20)].map( (_, index) => {
           return (
-            <div key={index} className="w-[5vw] flex flex-col">
+            <div key={index} className="w-[5vw] flex flex-col bg-transparent">
               { generateGrid() }
             </div>
           )

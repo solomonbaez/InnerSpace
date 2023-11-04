@@ -24,7 +24,7 @@ const Header = forwardRef<HTMLButtonElement, HeaderProps>(function Index(props: 
       <div
       className="fixed top-10 left-10 w-20 z-30 h-20 flex box-border mix-blend-difference items-center justify-center"
       >
-        <h1 className="text-4xl">SB</h1>
+        <h1 className="text-2xl">SB</h1>
       </div>
       </>
     );
