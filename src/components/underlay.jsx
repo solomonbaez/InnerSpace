@@ -3,10 +3,10 @@ import Header from "@/components/header"
 export default function Index() {
   return (
     <>
-      <div className="absolute z-20 top-0 left-0 w-screen h-screen bg-transparent p-10 mix-blend-difference inline-flex flex-col justify-start pointer-events-none">
+      <div className="absolute z-30 top-0 left-0 w-screen h-screen bg-transparent p-10 mix-blend-difference inline-flex flex-col justify-start pointer-events-none">
         {/* <Header /> */}
-        <div className="p-0 flex-row items-center justify-start">
-          <p className="flex-1 h-8 text-4xl font-bold leading-8 text-white tracking-tighter">
+        <div className="pb-10 flex-row items-center justify-start">
+          <p className="fixed z-20 flex-1 h-8 text-4xl font-bold leading-8 text-white tracking-tighter">
             SB
           </p>
         </div>
@@ -20,7 +20,7 @@ export default function Index() {
           </p>
         </div>
 
-        <div className="absolute top-0 right-0 w-0 h-screen flex flex-col items-end justify-end">
+        <div className="absolute top-0 right-0 w-0 hidden md:flex md:flex-row h-screen items-end justify-end">
           <p className="absolute rotate-90 text-2xl top-1/2 -right-40 font-bold text-white whitespace-nowrap">
             S C R O L L  D O W N &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↦
           </p>

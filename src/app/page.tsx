@@ -69,15 +69,18 @@ const Home: React.FC = () => {
         { transition && dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
       </AnimatePresence>
 
-      <div className="h-screen w-screen justify-center text-8xl">
+      <div className="h-screen w-screen justify-center">
 
       <Suspense fallback={null}>
         <App />
 
         <div className='absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-white'>
-          <h1 ref={ ref } onFocus={replay} onMouseOver={replay}/>
+          <h1 ref={ ref } onFocus={replay} onMouseOver={replay} className="whitespace-nowrap text-4xl md:text-6xl lg:text-8xl"/>
         </div>
       </Suspense>
+      </div>
+      <div className="h-screen w-screen">
+        <App />
       </div>
     </main>
   )
