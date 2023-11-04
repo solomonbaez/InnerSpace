@@ -52,8 +52,8 @@ const Home: React.FC = () => {
   const { ref, replay } = useScramble({
     text: "HELLO WORLD",
     speed: 0.2,
-    tick: 3,
-    seed: 3,
+    tick: 1,
+    seed: 4,
     overdrive: false,
   })
 

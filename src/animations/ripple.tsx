@@ -11,7 +11,7 @@ export default function Index() {
 	return (
 		<Canvas
 			camera={{
-				position: [0, 0, 8],
+				position: [0, 0, 5],
 				fov: 50,
 				aspect: window.innerWidth / window.innerHeight,
 				near: 0.1,
@@ -47,6 +47,7 @@ function WaveTorus() {
 			
 			const fadeIn = Math.sin(esp) / mod;
 			mod -= 0.20
+
 			console.log(fadeIn)
 			normRef.current!.uniforms[u_direction_key].value.set(fadeIn, fadeIn, fadeIn);
 
