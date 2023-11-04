@@ -11,7 +11,7 @@ export default function Index() {
 	return (
 		<Canvas
 			camera={{
-				position: [0, 0, 5],
+				position: [0, 0, 6],
 				fov: 50,
 				aspect: window.innerWidth / window.innerHeight,
 				near: 0.1,
@@ -33,6 +33,9 @@ function WaveTorus() {
 
 	useFrame(({ clock }) => {
 		const esp = clock.getElapsedTime()
+		const msin = Math.sin(esp)
+		console.log(esp, msin)
+		
 
 		const u_direction_key = Object.keys(normRef.current!.uniforms).find((key) =>
 			key.endsWith('direction')
@@ -45,10 +48,10 @@ function WaveTorus() {
 			)
 		} else if (u_direction_key && !begun) {
 			
+			// gradually adjust rendering pattern
 			const fadeIn = Math.sin(esp) / mod;
 			mod -= 0.20
-
-			console.log(fadeIn)
+			console.log(mod, fadeIn)
 			normRef.current!.uniforms[u_direction_key].value.set(fadeIn, fadeIn, fadeIn);
 
 			if (fadeIn >= 1) {

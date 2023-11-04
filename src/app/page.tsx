@@ -1,7 +1,8 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Header from "@/components/header"
+import Underlay from "@/components/underlay"
 // import Menu from "@/components/menu"
 import PixelTransition from "@/components/pixelTransition"
 import ReactiveCursor from "@/components/reactiveCursor"
@@ -59,6 +60,7 @@ const Home: React.FC = () => {
 
   return (
     <main>
+      <Underlay />
       <Header ref={reactiveElement} isActive={isActive} setIsActive={setIsActive}/>
       {/* <Menu isActive={isActive} /> */}
       <ReactiveCursor reactiveElement={reactiveElement}/>
@@ -68,11 +70,14 @@ const Home: React.FC = () => {
       </AnimatePresence>
 
       <div className="h-screen w-screen justify-center text-8xl">
+
+      <Suspense fallback={null}>
         <App />
 
         <div className='absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-white'>
           <h1 ref={ ref } onFocus={replay} onMouseOver={replay}/>
         </div>
+      </Suspense>
       </div>
     </main>
   )
