@@ -6,6 +6,7 @@ import Header from "@/components/header"
 import PixelTransition from "@/components/pixelTransition"
 import ReactiveCursor from "@/components/reactiveCursor"
 import { AnimatePresence } from "framer-motion";
+import { useScramble } from "use-scramble";
 
 const App = dynamic(() => import("../animations/app"), {ssr: false});
 
@@ -48,6 +49,14 @@ const Home: React.FC = () => {
 
   }, [isActive, transition])
 
+  const { ref, replay } = useScramble({
+    text: "HELLO WORLD",
+    speed: 0.2,
+    tick: 3,
+    seed: 3,
+    overdrive: false,
+  })
+
   return (
     <main>
       <Header ref={reactiveElement} isActive={isActive} setIsActive={setIsActive}/>
@@ -60,11 +69,11 @@ const Home: React.FC = () => {
 
       <div className="h-screen w-screen justify-center text-8xl">
         <App />
-      </div>
 
-      {/* <div className='items-center justify-center absolute w-screen top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 uppercase text-2xl text-white'>
-        <h1 className="text-white">HELLO WORLD</h1>
-      </div> */}
+        <div className='absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-white'>
+          <h1 ref={ ref } onFocus={replay} onMouseOver={replay}/>
+        </div>
+      </div>
     </main>
   )
 }

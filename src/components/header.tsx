@@ -11,6 +11,7 @@ const Header = forwardRef<HTMLButtonElement, HeaderProps>(function Index(props: 
     const { isActive, setIsActive } = props;
 
     return (
+      <>
       <button ref={ref}
       className="fixed top-10 right-10 w-20 z-30 h-20 flex box-border mix-blend-difference items-center justify-center"
       onClick={() => setIsActive(!isActive)}
@@ -19,6 +20,13 @@ const Header = forwardRef<HTMLButtonElement, HeaderProps>(function Index(props: 
           <Diamond key="menu" isActive={isActive}/>
         </MagneticGSAP>
       </button>
+
+      <div
+      className="fixed top-10 left-10 w-20 z-30 h-20 flex box-border mix-blend-difference items-center justify-center"
+      >
+        <h1 className="text-4xl">SB</h1>
+      </div>
+      </>
     );
 })
 
