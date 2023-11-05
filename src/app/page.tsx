@@ -83,15 +83,17 @@ const Home: React.FC = () => {
         </div>
       </Suspense>
       </div>
-      <div className="z-30 w-screen h-screen bg-transparent p-10 inline-flex flex-col justify-start pointer-events-none">
-        <div className={`pt-10 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opactiy-300"}`}>
+      { !isActive ? (
+        <div className="z-30 w-screen h-screen bg-transparent p-10 inline-flex flex-col justify-start pointer-events-none">
+          <div className={`pt-10 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opactiy-300"}`}>
 
-          <p className="relative whitespace-normal w-5/6 left-1/2 -translate-x-1/2 text-2xl md:text-4xl text-white">
-            Hi, I&apos;m Solomon Baez, a Fullstack Engineer with a focus on developing Backend solutions.
-          </p>
+            <p className="relative whitespace-normal w-5/6 left-1/2 -translate-x-1/2 text-2xl md:text-4xl text-white">
+              Hi, I&apos;m Solomon Baez, a Fullstack Engineer with a focus on developing Backend solutions.
+            </p>
 
+          </div>
         </div>
-      </div>
+      ): (null) }
     </main>
   )
 }

@@ -19,7 +19,7 @@ export default function Index({ enableOrbit }: { enableOrbit: boolean}) {
 			}}
 			dpr={window.devicePixelRatio}>
 			<color attach="background" args={['#000000']} />
-			<OrbitControls enabled={enableOrbit} enableZoom={false} enableDamping={true}/>
+			{ enableOrbit && <OrbitControls enableZoom={false} enableDamping={true}/> }
 			<WaveTorus />
 		</Canvas>
 	)
