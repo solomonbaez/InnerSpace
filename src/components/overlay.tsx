@@ -14,9 +14,9 @@ export default function Index({ isActive }: {isActive: boolean}) {
           <p className="flex-1 h-full text-12 leading-6 text-white">
             <b>FULLSTACK ENGINEER</b>
             <br />
-            {/* <p className="hidden md:">🂠 🂡 🂠 🂱 🂠</p> */}
+            <b className="invisible md:visible">🂠 🂡 🂠 🂱 🂠</b>
             <br />
-            <b>—</b>
+            <b className="invisible md:visible">—</b>
           </p>
         </div>
 
