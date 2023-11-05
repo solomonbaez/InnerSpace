@@ -3,7 +3,7 @@ import Diamond from "@/components/diamond"
 import MagneticGSAP from "@/components/magneticGSAP"
 
 
-export default function Index() {
+export default function Index({ isActive }: {isActive: boolean}) {
   return (
     <>
       <div className="absolute z-30 top-0 left-0 w-screen h-screen bg-transparent p-10 mix-blend-difference inline-flex flex-col justify-start pointer-events-none">
@@ -13,7 +13,8 @@ export default function Index() {
             SB
           </p>
         </div>
-        <div className="pt-10 flex-row items-start justify-start">
+
+        <div className={`pt-10 flex-row items-start justify-start transition-opacity duration-700 ${isActive ? "opacity-0" : "opactiy-300"}`}>
           <p className="flex-1 h-full text-12 leading-6 text-white">
             <b>FULLSTACK ENGINEER</b>
             <br />

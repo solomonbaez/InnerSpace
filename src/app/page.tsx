@@ -60,7 +60,7 @@ const Home: React.FC = () => {
 
   return (
     <main>
-      <Overlay />
+      <Overlay isActive={isActive}/>
       <Header ref={reactiveElement} isActive={isActive} setIsActive={setIsActive}/>
       {/* <Menu isActive={isActive} /> */}
       <ReactiveCursor reactiveElement={reactiveElement}/>
@@ -72,15 +72,15 @@ const Home: React.FC = () => {
       <div className="h-screen w-screen justify-center">
 
       <Suspense fallback={null}>
-        <App />
+        <App dimensions={dimensions}/>
 
-        <div className='absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-white'>
+        <div className= {`absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-white ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
           <h1 ref={ ref } onFocus={replay} onMouseOver={replay} className="whitespace-nowrap text-6xl md:text-7xl lg:text-8xl"/>
         </div>
       </Suspense>
       </div>
       <div className="h-screen w-screen">
-        <App />
+        <App dimensions={dimensions}/>
       </div>
     </main>
   )

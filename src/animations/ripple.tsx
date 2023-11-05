@@ -7,7 +7,7 @@ import { LayerMaterial, Normal, Fresnel, Displace, Noise } from 'lamina'
 import { Displace as Disp, Normal as Norm } from 'lamina/vanilla'
 import { useRef } from 'react'
 
-export default function Index() {
+export default function Index({ enableOrbit }: { enableOrbit: boolean}) {	
 	return (
 		<Canvas
 			camera={{
@@ -19,7 +19,7 @@ export default function Index() {
 			}}
 			dpr={window.devicePixelRatio}>
 			<color attach="background" args={['#000000']} />
-			<OrbitControls enableZoom={false} enableDamping={true}/>
+			<OrbitControls enabled={enableOrbit} autoRotate={!enableOrbit} enableZoom={false} enableDamping={true}/>
 			<WaveTorus />
 		</Canvas>
 	)
