@@ -1,6 +1,6 @@
 "use client";
 // import * as THREE from "three";
-import { OrbitControls, TorusKnot } from '@react-three/drei'
+import { OrbitControls, TorusKnot, Stats } from '@react-three/drei'
 // import { Physics, RigidBody, BallCollider, RapierRigidBody } from "@react-three/rapier"
 import { Canvas, useFrame } from '@react-three/fiber'
 import { LayerMaterial, Normal, Fresnel, Displace, Noise } from 'lamina'
@@ -19,8 +19,9 @@ export default function Index({ enableOrbit }: { enableOrbit: boolean}) {
 			}}
 			dpr={window.devicePixelRatio}>
 			<color attach="background" args={['#000000']} />
-			<OrbitControls enabled={enableOrbit} autoRotate={!enableOrbit} enableZoom={false} enableDamping={true}/>
+			<OrbitControls enabled={enableOrbit} enableZoom={false} enableDamping={true}/>
 			<WaveTorus />
+			<Stats />
 		</Canvas>
 	)
 }

@@ -1,7 +1,3 @@
-import React, { forwardRef } from 'react';
-import Diamond from "@/components/diamond"
-import MagneticGSAP from "@/components/magneticGSAP"
-
 
 export default function Index({ isActive }: {isActive: boolean}) {
   return (
