@@ -1,10 +1,13 @@
-import Header from "@/components/header"
+import React, { forwardRef } from 'react';
+import Diamond from "@/components/diamond"
+import MagneticGSAP from "@/components/magneticGSAP"
+
 
 export default function Index() {
   return (
     <>
       <div className="absolute z-30 top-0 left-0 w-screen h-screen bg-transparent p-10 mix-blend-difference inline-flex flex-col justify-start pointer-events-none">
-        {/* <Header /> */}
+
         <div className="pb-10 flex-row items-center justify-start">
           <p className="fixed z-20 flex-1 h-8 text-4xl font-bold leading-8 text-white tracking-tighter">
             SB

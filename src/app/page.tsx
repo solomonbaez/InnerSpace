@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useRef, useState, Suspense } from "react";
 import dynamic from "next/dynamic";
-import Header from "@/components/header"
-import Underlay from "@/components/underlay"
+import Header from "@/components/header";
+import Overlay from "@/components/overlay";
 // import Menu from "@/components/menu"
-import PixelTransition from "@/components/pixelTransition"
-import ReactiveCursor from "@/components/reactiveCursor"
+import PixelTransition from "@/components/pixelTransition";
+import ReactiveCursor from "@/components/reactiveCursor";
 import { AnimatePresence } from "framer-motion";
 import { useScramble } from "use-scramble";
 
@@ -60,7 +60,7 @@ const Home: React.FC = () => {
 
   return (
     <main>
-      <Underlay />
+      <Overlay />
       <Header ref={reactiveElement} isActive={isActive} setIsActive={setIsActive}/>
       {/* <Menu isActive={isActive} /> */}
       <ReactiveCursor reactiveElement={reactiveElement}/>
@@ -75,7 +75,7 @@ const Home: React.FC = () => {
         <App />
 
         <div className='absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-white'>
-          <h1 ref={ ref } onFocus={replay} onMouseOver={replay} className="whitespace-nowrap text-4xl md:text-6xl lg:text-8xl"/>
+          <h1 ref={ ref } onFocus={replay} onMouseOver={replay} className="whitespace-nowrap text-6xl md:text-7xl lg:text-8xl"/>
         </div>
       </Suspense>
       </div>

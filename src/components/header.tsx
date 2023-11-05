@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import Diamond from "@/components/diamond"
 import MagneticGSAP from "@/components/magneticGSAP"
 
@@ -13,7 +13,7 @@ const Header = forwardRef<HTMLButtonElement, HeaderProps>(function Index(props: 
     return (
       <>
       <button ref={ref}
-      className="fixed top-10 right-0 w-20 z-30 h-20 flex box-border mix-blend-difference items-center justify-center"
+      className="fixed top-5 right-5 w-20 z-30 h-10 p-10 mix-blend-difference inline-flex flex-col justify-start box-border items-center "
       onClick={() => setIsActive(!isActive)}
       >
         <MagneticGSAP>
