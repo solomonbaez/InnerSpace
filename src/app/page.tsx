@@ -86,9 +86,7 @@ const Home: React.FC = () => {
       <div className="h-screen w-screen justify-center">
 
       <Suspense fallback={null}>
-        <div className="h-[600px] w-[600px] md:h-[900px] md:w-[900px] lg:h-[1000px] lg:w-[1000px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <Ripple dimensions={canvasDimensions}/>
-        </div>
+        <Ripple dimensions={canvasDimensions}/>
 
         <div className= {`bg-white absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
           <h1 ref={ ref } onFocus={replay} onMouseOver={replay} className="whitespace-nowrap text-5xl md:text-7xl lg:text-8xl"/>
