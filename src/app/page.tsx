@@ -35,6 +35,13 @@ const Home: React.FC = () => {
     }
   }, [])
 
+  const [enableDesktop, setEnableDesktop] = useState<boolean>(true);
+  useEffect(() => {
+    if (dimensions.width <= 640) {
+      setEnableDesktop(false);
+    }
+  }, [enableDesktop, dimensions.width])
+
   useEffect(() => {
     if (isActive) {
       setTransition(isActive)
@@ -63,7 +70,7 @@ const Home: React.FC = () => {
       <Overlay isActive={isActive}/>
       <Header ref={reactiveElement} isActive={isActive} setIsActive={setIsActive}/>
       {/* <Menu isActive={isActive} /> */}
-      <ReactiveCursor reactiveElement={reactiveElement}/>
+      { enableDesktop && <ReactiveCursor reactiveElement={reactiveElement}/>}
 
       <AnimatePresence>
         { transition && dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
@@ -72,7 +79,7 @@ const Home: React.FC = () => {
       <div className="h-screen w-screen justify-center">
 
       <Suspense fallback={null}>
-        <App dimensions={dimensions}/>
+        <App enableDesktop={enableDesktop}/>
 
         <div className= {`absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-white ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
           <h1 ref={ ref } onFocus={replay} onMouseOver={replay} className="whitespace-nowrap text-5xl md:text-7xl lg:text-8xl"/>
@@ -80,7 +87,7 @@ const Home: React.FC = () => {
       </Suspense>
       </div>
       <div className="h-screen w-screen">
-        <App dimensions={dimensions}/>
+        <App enableDesktop={enableDesktop}/>
       </div>
     </main>
   )

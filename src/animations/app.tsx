@@ -9,16 +9,8 @@ interface Dimensions {
   height: number,
 }
 
-export default function App({ dimensions }: { dimensions: Dimensions }) {
-  const [enableOrbit, setEnableOrbit] = useState<boolean>(true);
-
-  useEffect(() => {
-    if (dimensions.width <= 640) {
-      setEnableOrbit(false);
-    }
-  }, [enableOrbit, dimensions.width])
-
+export default function App({ enableDesktop }: { enableDesktop: boolean }) {
   return (
-    <Ripple enableOrbit={enableOrbit}/>
+    <Ripple enableOrbit={enableDesktop}/>
   )
 }
