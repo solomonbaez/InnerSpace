@@ -57,7 +57,7 @@ export default function Index({isActive, dimensions}) {
   }
 
   return (
-    <div className="absolute flex z-20 w-screen h-screen pointer-events-none mix-blend-difference">
+    <div className="absolute flex z-20 w-screen h-screen pointer-events-none mix-blend-lighten">
       {
         [...Array(20)].map( (_, index) => {
           return (
