@@ -75,7 +75,7 @@ const Home: React.FC = () => {
         <App dimensions={dimensions}/>
 
         <div className= {`absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-white ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
-          <h1 ref={ ref } onFocus={replay} onMouseOver={replay} className="whitespace-nowrap text-6xl md:text-7xl lg:text-8xl"/>
+          <h1 ref={ ref } onFocus={replay} onMouseOver={replay} className="whitespace-nowrap text-5xl md:text-7xl lg:text-8xl"/>
         </div>
       </Suspense>
       </div>
