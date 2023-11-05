@@ -27,17 +27,13 @@ const Home: React.FC = () => {
     setDimensions({width: innerWidth, height: innerHeight});
   }
 
-  const [desktop, setDesktop] = useState<boolean>(true);
   useEffect(() => {
     updateDimensions();
-    if (desktop && dimensions.width <= 640) {
-      setDesktop(false)
-    }
     window.addEventListener("resize", updateDimensions);
     return () => {
       window.removeEventListener("resize", updateDimensions)
     }
-  }, [desktop, dimensions.width])
+  })
 
   useEffect(() => {
     if (isActive) {
@@ -67,7 +63,7 @@ const Home: React.FC = () => {
       <Overlay isActive={isActive}/>
       <Header ref={reactiveElement} isActive={isActive} setIsActive={setIsActive}/>
       {/* <Menu isActive={isActive} /> */}
-      { desktop && <ReactiveCursor reactiveElement={reactiveElement}/> }
+      <ReactiveCursor reactiveElement={reactiveElement}/>
 
       <AnimatePresence>
         { transition && dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
