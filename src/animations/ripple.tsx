@@ -7,19 +7,25 @@ import { LayerMaterial, Normal, Fresnel, Displace, Noise } from 'lamina'
 import { Displace as Disp, Normal as Norm } from 'lamina/vanilla'
 import { useRef } from 'react'
 
-export default function Index({ enableOrbit }: { enableOrbit: boolean}) {	
+interface Dimensions {
+  width: number,
+  height: number,
+	dpr: number, 
+}
+
+export default function Index({ dimensions }: { dimensions: Dimensions }) {	
 	return (
 		<Canvas
 			camera={{
 				position: [0, 0, 6],
 				fov: 50,
-				aspect: window.innerWidth / window.innerHeight,
+				aspect: dimensions.width / dimensions.height,
 				near: 0.1,
 				far: 2000
 			}}
-			dpr={window.devicePixelRatio}>
+			dpr={dimensions.dpr}>
 			<color attach="background" args={['#000000']} />
-			{ enableOrbit && <OrbitControls enableZoom={false} enableDamping={true}/> }
+			{ dimensions.width >= 640 && <OrbitControls enableZoom={false} enableDamping={true}/> }
 			<WaveTorus />
 		</Canvas>
 	)

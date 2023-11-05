@@ -10,11 +10,11 @@ export default function Index({ isActive }: {isActive: boolean}) {
           </p>
         </div>
 
-        <div className={`pt-10 flex-row items-start justify-start transition-opacity duration-700 ${isActive ? "opacity-0" : "opactiy-300"}`}>
+        <div className={`pt-5 md:pt-10 flex-row items-start justify-start transition-opacity duration-700 ${isActive ? "opacity-0" : "opactiy-300"}`}>
           <p className="flex-1 h-full text-12 leading-6 text-white">
             <b>FULLSTACK ENGINEER</b>
             <br />
-            🂠 🂡 🂠 🂱 🂠
+            {/* <p className="hidden md:">🂠 🂡 🂠 🂱 🂠</p> */}
             <br />
             <b>—</b>
           </p>

@@ -3,18 +3,18 @@ import React, { useEffect, useRef, useState, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Header from "@/components/header";
 import Overlay from "@/components/overlay";
-import Navigation from "@/components/svgCurve/navigation";
 // import Menu from "@/components/menu"
 import PixelTransition from "@/components/pixelTransition";
 import ReactiveCursor from "@/components/reactiveCursor";
 import { AnimatePresence } from "framer-motion";
 import { useScramble } from "use-scramble";
 
-const App = dynamic(() => import("../animations/app"), {ssr: false});
+const Ripple = dynamic(() => import("../animations/ripple"), {ssr: false});
 
 interface Dimensions {
   width: number,
   height: number,
+  dpr: number, 
 }
 
 const Home: React.FC = () => {
@@ -22,10 +22,20 @@ const Home: React.FC = () => {
 
   const [isActive, setIsActive] = useState<boolean>(false);
   const [transition, setTransition] = useState<boolean>(false);
-  const [dimensions, setDimensions] = useState<Dimensions>({width: 0, height: 0});
+
+  const [dimensions, setDimensions] = useState<Dimensions>({ width: 0, height: 0, dpr: 0 });
+  const [canvasDimensions, setCanvasDimensions] = useState<Dimensions>({ width: 0, height: 0, dpr:0 });
   const updateDimensions = () => {
-    const { innerWidth, innerHeight } = window;
-    setDimensions({width: innerWidth, height: innerHeight});
+    // const { innerWidth, innerHeight } = window;
+    const clientWidth = window.document.documentElement.clientWidth;
+    const clientHeight = window.document.documentElement.clientHeight;
+    const dpr = window.devicePixelRatio;
+    setDimensions({ width: clientWidth, height: clientHeight, dpr: dpr });
+
+    // set a static dimension for the canvas to reduce state stress
+    if (canvasDimensions.width === 0 && canvasDimensions.height === 0) {
+      setCanvasDimensions({ width: clientWidth, height: clientWidth, dpr: dpr });
+    }
   }
 
   useEffect(() => {
@@ -73,10 +83,10 @@ const Home: React.FC = () => {
         {/* {isActive && <Navigation />} */}
       </AnimatePresence>
 
-      <div className="h-screen w-screen justify-center">
+      <div className="h-screen w-screen justify-center resize-none">
 
       <Suspense fallback={null}>
-        <App dimensions={dimensions}/>
+        <Ripple dimensions={canvasDimensions}/>
 
         <div className= {`bg-white absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
           <h1 ref={ ref } onFocus={replay} onMouseOver={replay} className="whitespace-nowrap text-5xl md:text-7xl lg:text-8xl"/>
