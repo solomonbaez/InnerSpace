@@ -21,7 +21,6 @@ export default function Index({ enableOrbit }: { enableOrbit: boolean}) {
 			<color attach="background" args={['#000000']} />
 			<OrbitControls enabled={enableOrbit} enableZoom={false} enableDamping={true}/>
 			<WaveTorus />
-			<Stats />
 		</Canvas>
 	)
 }

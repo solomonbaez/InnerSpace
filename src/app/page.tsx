@@ -74,13 +74,19 @@ const Home: React.FC = () => {
       <Suspense fallback={null}>
         <App dimensions={dimensions}/>
 
-        <div className= {`absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-white ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
-          <h1 ref={ ref } onFocus={replay} onMouseOver={replay} className="whitespace-nowrap text-6xl md:text-7xl lg:text-8xl"/>
+        <div className= {`bg-white absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
+          <h1 ref={ ref } onFocus={replay} onMouseOver={replay} className="whitespace-nowrap text-5xl md:text-7xl lg:text-8xl"/>
         </div>
       </Suspense>
       </div>
-      <div className="h-screen w-screen">
-        <App dimensions={dimensions}/>
+      <div className="z-30 w-screen h-screen bg-transparent p-10 inline-flex flex-col justify-start pointer-events-none">
+        <div className={`pt-10 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opactiy-300"}`}>
+
+          <p className="relative whitespace-normal w-5/6 left-1/2 -translate-x-1/2 text-2xl md:text-4xl text-white">
+            Hi, I&apos;m Solomon Baez, a Fullstack Engineer with a focus on developing Backend solutions.
+          </p>
+
+        </div>
       </div>
     </main>
   )

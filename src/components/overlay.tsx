@@ -5,7 +5,7 @@ export default function Index({ isActive }: {isActive: boolean}) {
       <div className="absolute z-30 top-0 left-0 w-screen h-screen bg-transparent p-10 mix-blend-difference inline-flex flex-col justify-start pointer-events-none">
 
         <div className="pb-10 flex-row items-center justify-start">
-          <p className="fixed z-20 flex-1 h-8 text-4xl font-bold leading-8 text-white tracking-tighter">
+          <p className="fixed flex-1 h-8 text-4xl font-bold leading-8 text-white tracking-tighter">
             SB
           </p>
         </div>
