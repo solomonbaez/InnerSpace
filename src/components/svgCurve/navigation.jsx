@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { menuSlide } from "@/components/animation";
-import Link from "@/components/link";
-import Curve from "@/components/curve";
+import { menuSlide } from "./animation";
+import Link from "./link";
+import Curve from "./curve";
 
 const navigationComponents = [
     {

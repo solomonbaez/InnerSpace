@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { slide, scale } from '@/components/animation';
+import { slide, scale } from './animation';
 
 export default function Index({data, isActive, setIndicator}) {
     const { title, href, index} = data;

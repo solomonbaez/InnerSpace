@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Header from "@/components/header";
 import Overlay from "@/components/overlay";
+import Navigation from "@/components/svgCurve/navigation";
 // import Menu from "@/components/menu"
 import PixelTransition from "@/components/pixelTransition";
 import ReactiveCursor from "@/components/reactiveCursor";
@@ -65,8 +66,11 @@ const Home: React.FC = () => {
       {/* <Menu isActive={isActive} /> */}
       <ReactiveCursor reactiveElement={reactiveElement}/>
 
+      {/* { isActive && <div className="transition-opacity duration-1000 opacity-100 absolute z-20 h-screen w-screen bg-white mix-blend-difference"></div>} */}
+
       <AnimatePresence>
         { transition && dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
+        {/* {isActive && <Navigation />} */}
       </AnimatePresence>
 
       <div className="h-screen w-screen justify-center">
