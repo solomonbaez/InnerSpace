@@ -107,7 +107,7 @@ export default function Home() {
         <div className="z-30 w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center pointer-events-none">
         <div className={`pt-10 w-5/6 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
           <div className="flex w-full">
-            <div className="md:w-1/2 pr-10 flex flex-col space-y-4">
+            <div className="w-1/2 pr-10 flex flex-col space-y-4">
               <div className="flex flex-col pt-4 md:flex-row space-x-4 items-center justify-center">
                 <GolangSVG />
                 <RustSVG />
@@ -117,7 +117,7 @@ export default function Home() {
                 <PythonSVG />
               </div>
             </div>
-            <div className="pl-10 pt-2 pb-2 md:w-1/2">
+            <div className="pl-10 pt-2 pb-2 w-1/2">
               <p ref={about.ref} onClick={about.replay} onMouseOver={about.replay} className="relative whitespace-normal text-2xl md:text-4xl text-white" />
               <br />
               <hr className="bg-white"/>
