@@ -19,7 +19,6 @@ function WaveTorus() {
 
 	useFrame(({ clock }) => {
 		const esp = clock.getElapsedTime()
-		const msin = Math.sin(esp)
 		
 		const u_direction_key = Object.keys(normRef.current!.uniforms).find((key) =>
 			key.endsWith('direction')
