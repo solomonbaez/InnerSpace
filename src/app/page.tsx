@@ -108,11 +108,11 @@ export default function Home() {
         <div className={`pt-10 w-5/6 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
           <div className="flex w-full">
             <div className="md:w-1/2 pr-10 flex flex-col space-y-4">
-              <div className="flex flex-row space-x-4 items-center justify-center">
+              <div className="flex flex-col pt-4 md:flex-row space-x-4 items-center justify-center">
                 <GolangSVG />
                 <RustSVG />
               </div>
-              <div className="flex flex-row space-x-4 items-center justify-center">
+              <div className="flex flex-col space-y-4 md:flex-row space-x-4 items-center justify-center">
                 <TypeScriptSVG />
                 <PythonSVG />
               </div>
