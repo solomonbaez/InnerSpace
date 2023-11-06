@@ -10,7 +10,10 @@ import { AnimatePresence } from "framer-motion";
 import { useScramble } from "use-scramble";
 import Lenis from "@studio-freight/lenis";
 
+import { Canvas } from "@react-three/offscreen"
+
 const Ripple = dynamic(() => import("../animations/ripple"), {ssr: false});
+// const AppScene = dynamic(() => import("../animations/app"), {ssr: false});
 
 interface Dimensions {
   width: number,
@@ -19,6 +22,16 @@ interface Dimensions {
 }
 
 export default function Home() {
+  const [worker, setWorker] = useState<Worker>();
+  useEffect(() => {
+    const newWorker = new Worker(new URL("../animations/worker", import.meta.url), {type: "module"});
+    setWorker(newWorker)
+
+    return () => {
+      newWorker.terminate();
+      setWorker(newWorker)
+    }
+  }, [])
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -103,15 +116,30 @@ export default function Home() {
         {/* {isActive && <Navigation />} */}
       </AnimatePresence>
       <div className="h-screen w-screen">
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}> */}
         <div className="absolute left-1/2 -translate-x-1/2 w-[800px] h-[800px]">
-          <Ripple dimensions={canvasDimensions}/>
+          {/* <Ripple dimensions={canvasDimensions}/> */}
+          {/* <AppScene /> */}
+
+          <Canvas
+            worker={worker} 
+            fallback={null} //<Ripple dimensions={ripple}/>}
+            camera={{
+              position: [0, 0, 6],
+              fov: 50,
+              aspect: 1,
+              near: 0.1,
+              far: 2000
+            }}
+            dpr = {1}
+            // className="bg-white"
+          />
         </div>
 
         <div className= {`bg-white absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
           <h1 ref={home.ref} onFocus={home.replay} onMouseOver={home.replay} className="whitespace-nowrap text-5xl md:text-7xl lg:text-8xl"/>
         </div>
-      </Suspense>
+      {/* </Suspense> */}
       </div>
       { !isActive ? (
         <>

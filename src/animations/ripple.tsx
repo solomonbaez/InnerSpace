@@ -14,20 +14,20 @@ interface Dimensions {
 
 export default function Index({ dimensions }: { dimensions: Dimensions }) {	
 	return (
-		<Canvas
-			camera={{
-				position: [0, 0, 6],
-				fov: 50,
-				aspect: dimensions.width / dimensions.height,
-				near: 0.1,
-				far: 2000
-			}}
-			dpr={dimensions.dpr}
-			>
-			<color attach="background" args={['#000000']} />
-			{ dimensions.width >= 640 && <OrbitControls enableZoom={false} enableDamping={true}/> }
 			<WaveTorus />
-		</Canvas>
+		// <color attach="background" args={['#000000']}
+		// { dimensions.width >= 640 && <OrbitControls enableZoom={false} enableDamping={true}/> }
+		// <Canvas
+		// 	camera={{
+		// 		position: [0, 0, 6],
+		// 		fov: 50,
+		// 		aspect: dimensions.width / dimensions.height,
+		// 		near: 0.1,
+		// 		far: 2000
+		// 	}}
+		// 	dpr={dimensions.dpr}
+		// 	>
+		// </Canvas>
 	)
 }
 
