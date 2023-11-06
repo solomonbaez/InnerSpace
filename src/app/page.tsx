@@ -115,19 +115,21 @@ export default function Home() {
 
       <div className="relative overflow-hidden h-screen w-screen">
       <Suspense fallback={null}>
-        <Canvas
-          resize={{scroll: false, debounce:{scroll: 1, resize: 1}}}
-          worker={worker!} 
-          fallback={<Ripple />} 
-          camera={{
-            position: [0, 0, 6],
-            fov: 50,
-            aspect: 1,
-            near: 0.1,
-            far: 2000
-          }}
-          dpr = {1}
-        />
+        <div className="absolute h-[600px] w-[600px] md:h-[900px] md:w-[900px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <Canvas
+            resize={{scroll: false, debounce:{scroll: 1, resize: 1}}}
+            worker={worker!} 
+            fallback={<Ripple />} 
+            camera={{
+              position: [0, 0, 6],
+              fov: 50,
+              aspect: 1,
+              near: 0.1,
+              far: 2000
+            }}
+            dpr = {1}
+          />
+        </div>
         <div className= {`bg-white absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
           <h1 ref={home.ref} onFocus={home.replay} onMouseOver={home.replay} className="whitespace-nowrap text-5xl md:text-7xl lg:text-8xl"/>
         </div>
