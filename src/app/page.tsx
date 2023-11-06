@@ -8,6 +8,7 @@ import PixelTransition from "@/components/pixelTransition";
 import ReactiveCursor from "@/components/reactiveCursor";
 import { AnimatePresence } from "framer-motion";
 import { useScramble } from "use-scramble";
+import Lenis from "@studio-freight/lenis";
 
 const Ripple = dynamic(() => import("../animations/ripple"), {ssr: false});
 
@@ -18,6 +19,17 @@ interface Dimensions {
 }
 
 export default function Home() {
+
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+  })
+
   const reactiveElement = useRef<HTMLButtonElement>(null);
 
   const [isActive, setIsActive] = useState<boolean>(false);

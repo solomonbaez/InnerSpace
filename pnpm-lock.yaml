@@ -11,6 +11,9 @@ dependencies:
   '@react-three/fiber':
     specifier: ^8.15.9
     version: 8.15.9(react-dom@18.2.0)(react@18.2.0)(three@0.158.0)
+  '@studio-freight/lenis':
+    specifier: ^1.0.27
+    version: 1.0.27
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -833,6 +836,10 @@ packages:
       react: '>= 16.3.0'
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /@studio-freight/lenis@1.0.27:
+    resolution: {integrity: sha512-1I6EaWR9rxdFjIJtF52CtETJt9ngfY4AjawrJY5pLxCvHa/lQZ+1v2gTUntwNZkuks6E2It6YEXV6jnpnCZFjA==}
     dev: false
 
   /@swc/helpers@0.5.2:
