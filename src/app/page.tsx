@@ -22,14 +22,14 @@ interface Dimensions {
 }
 
 export default function Home() {
-  const [worker, setWorker] = useState<Worker>();
+  const [worker, setWorker] = useState<Worker | null>(null);
   useEffect(() => {
     const newWorker = new Worker(new URL("../animations/worker", import.meta.url), {type: "module"});
     setWorker(newWorker)
 
     return () => {
       newWorker.terminate();
-      setWorker(newWorker)
+      setWorker(null)
     }
   }, [])
 
@@ -120,9 +120,8 @@ export default function Home() {
         <div className="absolute left-1/2 -translate-x-1/2 w-[800px] h-[800px]">
           {/* <Ripple dimensions={canvasDimensions}/> */}
           {/* <AppScene /> */}
-
           <Canvas
-            worker={worker} 
+            worker={worker!} 
             fallback={null} //<Ripple dimensions={ripple}/>}
             camera={{
               position: [0, 0, 6],
