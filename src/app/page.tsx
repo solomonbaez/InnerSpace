@@ -102,11 +102,11 @@ export default function Home() {
         { transition && dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
         {/* {isActive && <Navigation />} */}
       </AnimatePresence>
-
-      <div className="h-screen w-screen justify-center">
-
+      <div className="h-screen w-screen">
       <Suspense fallback={null}>
-        <Ripple dimensions={canvasDimensions}/>
+        <div className="absolute left-1/2 -translate-x-1/2 w-[800px] h-[800px]">
+          <Ripple dimensions={canvasDimensions}/>
+        </div>
 
         <div className= {`bg-white absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
           <h1 ref={home.ref} onFocus={home.replay} onMouseOver={home.replay} className="whitespace-nowrap text-5xl md:text-7xl lg:text-8xl"/>
