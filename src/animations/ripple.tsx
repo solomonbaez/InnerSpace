@@ -1,33 +1,13 @@
 "use client";
-// import * as THREE from "three";
-import { OrbitControls, TorusKnot, Stats } from '@react-three/drei'
-import { Canvas, useFrame, render, unmountComponentAtNode } from '@react-three/fiber'
+import { useRef } from 'react'
+import { TorusKnot } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 import { LayerMaterial, Normal, Fresnel, Displace, Noise } from 'lamina'
 import { Displace as Disp, Normal as Norm } from 'lamina/vanilla'
-import { useEffect, useRef } from 'react'
 
-interface Dimensions {
-  width: number,
-  height: number,
-	dpr: number, 
-}
-
-export default function Index({ dimensions }: { dimensions: Dimensions }) {	
+export default function Index() {	
 	return (
 			<WaveTorus />
-		// <color attach="background" args={['#000000']}
-		// { dimensions.width >= 640 && <OrbitControls enableZoom={false} enableDamping={true}/> }
-		// <Canvas
-		// 	camera={{
-		// 		position: [0, 0, 6],
-		// 		fov: 50,
-		// 		aspect: dimensions.width / dimensions.height,
-		// 		near: 0.1,
-		// 		far: 2000
-		// 	}}
-		// 	dpr={dimensions.dpr}
-		// 	>
-		// </Canvas>
 	)
 }
 
