@@ -27,13 +27,13 @@ function Title({data, setSelectedProject}) {
     const clip = useMotionTemplate`inset(0 ${clipProgress}% 0 0)`;
     
     return (
-        <div ref={container} className="relative z-20 border-b-2 border-gray-300 cursor-default">
+        <div ref={container} className="relative z-20 border-b-2 border-gray-300 cursor-default ">
             <div 
-                className="inline-block pl-[10%]"
+                className="inline-block w-full hover:bg-purple-300 pl-[10%]"
                 onMouseOver={() => {setSelectedProject(i)}}
                 onMouseLeave={() => {setSelectedProject(null)}}
             >
-                <motion.p className="inline-block uppercase text-[8vw] m-0 relative z-20" style={{clipPath: clip}}>
+                <motion.p className="w-full inline-block uppercase text-[8vw] m-0 relative z-20" style={{clipPath: clip}}>
                     {title}
                 </motion.p>
                 <p>

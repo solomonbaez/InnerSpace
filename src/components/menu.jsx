@@ -8,7 +8,7 @@ const animate = {
   },
   exit: {
       opacity: 0,
-      transition: {duration: 0, delay: 0.6}
+      transition: {duration: 0, delay: 0}
   }
 }
 

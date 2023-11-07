@@ -126,21 +126,21 @@ export default function Home() {
 
   // MENU TRANSITION
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [transition, setTransition] = useState<boolean>(false);
-  useEffect(() => {
-    if (isActive) {
-      setTransition(isActive)
-    } else {
-      const transitionTimeout = setTimeout(() => {
-        setTransition(isActive)
-      }, 900);
+  // const [transition, setTransition] = useState<boolean>(false);
+  // useEffect(() => {
+  //   if (isActive) {
+  //     setTransition(isActive)
+  //   } else {
+  //     const transitionTimeout = setTimeout(() => {
+  //       setTransition(isActive)
+  //     }, 900);
 
-      return () => {
-        clearTimeout(transitionTimeout)
-      };
-    }
+  //     return () => {
+  //       clearTimeout(transitionTimeout)
+  //     };
+  //   }
 
-  }, [isActive, transition])
+  // }, [isActive, transition])
 
   // SCRAMBLE EFFECT
   const home = useScramble({
@@ -168,11 +168,11 @@ export default function Home() {
       <div className="absolute z-0 top-5 left-1/2 -translate-x-1/2 w-[95%] overflow-hidden border border-gray-300 rounded-lg">
 
       {/* <AnimatePresence> */}
-      { transition && dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
+      { dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
       {/* </AnimatePresence> */}
 
       {/* <section key={"home"}> */}
-      <div className="relative overflow-hidden h-screen w-screen">
+      <div className="relative overflow h-screen w-screen">
         <Suspense fallback={null}>
           <div className="absolute h-[600px] w-[600px] md:h-[900px] md:w-[900px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <Canvas
@@ -203,21 +203,26 @@ export default function Home() {
       {/* <section key={"about"}> */}
       <div className="z-20 w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center pointer-events-none">
         <div className={`pt-10 w-5/6 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
+          <hr className="w-full pb-10" />
           <div className="flex w-full">
-            <div className="w-1/3 pr-10 flex flex-col space-y-4">
-              <div className="flex flex-col pt-4 md:flex-row space-x-4 items-center justify-center">
-                <GolangSVG />
-                <RustSVG />
-              </div>
-              <div className="flex flex-col space-y-4 md:flex-row space-x-4 items-center justify-center">
-                <TypeScriptSVG />
-                <PythonSVG />
-              </div>
+            <div className="w-1/3 flex flex-col space-y-3 md:text-2xl">
+              <p>
+                Go
+                <small> - 1.5y</small>
+              </p>
+              <p>TS
+                <small> - 1.5y</small>
+              </p>
+              <p>Rust 
+                <small> - 1y</small>
+              </p>
+              <p>Python 
+                <small> - 4y</small>
+              </p>
             </div>
-            <div className="pl-10 pt-2 pb-2 w-2/3">
-              <p ref={about.ref} onClick={about.replay} onMouseOver={about.replay} className="relative whitespace-normal text-2xl md:text-4xl text-white" />
-              <br />
-              <hr className="bg-white"/>
+            <div className="pl-10 pb-2 w-2/3">
+              <p ref={about.ref} onClick={about.replay} onMouseOver={about.replay} className="relative whitespace-normal text-xl md:text-4xl text-white" />
+              <hr className="bg-white translate-y-10"/>
             </div>
           </div>
         </div>

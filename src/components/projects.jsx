@@ -5,6 +5,11 @@ import Titles from "./titles"
 
 const data = [
     {
+        title: "This Website!",
+        description: "Working on the Next-Generation HMI Experience without no driving experience.",
+        speed: 0.5
+    },
+    {
         title: "Hyacinth",
         description: "Working on the Next-Generation HMI Experience without no driving experience.",
         speed: 0.5

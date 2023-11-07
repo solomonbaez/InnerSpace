@@ -14,8 +14,8 @@ export default function index({data, selectedProject}) {
                     return (
                     <div 
                         key={i} 
-                        className="bg-purple-300 flex justify-between items-center pl-[10%] pr-[10%]"
-                        style={{clipPath: selectedProject == i ? "inset(0 0 0)" : "inset(50% 0 50%"}}
+                        className="flex justify-between items-center pl-[10%] pr-[10%]"
+                        // style={{clipPath: selectedProject == i ? "inset(0 0 0)" : "inset(50% 0 50%"}}
                     >
                         <p>{crop(title, 9)}</p>
                         <p>{description}</p>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const animate = {
   initial: {
@@ -15,6 +16,20 @@ const animate = {
 };
 
 export default function Index({isActive, dimensions}) {
+  // const [scrollPos, setScrollPos] = useState(0);
+  // const handleScroll = () => {
+  //   const pos = window.scrollY;
+  //   setScrollPos(pos);
+  // }
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll, {passive: true});
+
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, [])
+
   const shuffle = (a) => {
     var i, r, previous
     for (i = a.length - 1; i > 0; i--) {
@@ -38,9 +53,9 @@ export default function Index({isActive, dimensions}) {
   }
 
   const generateGrid = () => {
-    const { innerWidth, innerHeight } = window;
+    const { innerWidth, innerHeight} = window;
     const elementSize = innerWidth * 0.05;
-    const elementCount = Math.ceil(innerHeight / elementSize);
+    const elementCount = Math.ceil(innerHeight / elementSize) * 4;
     const shuffled = shuffle([...Array(elementCount)].map( (_, i) => i ))
 
     return shuffled.map( (randomElement, index) => {
@@ -57,11 +72,11 @@ export default function Index({isActive, dimensions}) {
   }
 
   return (
-    <div className="fixed flex z-20 h-full w-full pointer-events-none mix-blend-lighten">
+    <div className="h-full w-full fixed top-0 left-0 flex z-30 pointer-events-none mix-blend-lighten">
       {
         [...Array(20)].map( (_, index) => {
           return (
-            <div key={index} className="w-[5vw] flex flex-col bg-transparent">
+            <div key={index} className={`w-[5vw] flex flex-col`}> 
               { generateGrid() }
             </div>
           )
