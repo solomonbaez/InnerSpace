@@ -47,10 +47,11 @@ export default function Index({ reactiveElement }) {
     reactiveElement.current.addEventListener("mouseleave", manageMouseLeave);
     window.addEventListener("mousemove", moveMouse);
 
+    const reactiveCleanup = reactiveElement.current
     return () => {
       window.removeEventListener("mousemove", moveMouse);
-      reactiveElement.current.removeEventListener("mouseenter", manageMouseOver);
-      reactiveElement.current.removeEventListener("mouseleave", manageMouseLeave);
+      reactiveCleanup.removeEventListener("mouseenter", manageMouseOver);
+      reactiveCleanup.removeEventListener("mouseleave", manageMouseLeave);
     }
   })
 
@@ -58,7 +59,7 @@ export default function Index({ reactiveElement }) {
     <motion.div 
       style={{left: smoothMouse.x, top: smoothMouse.y}}
       animate={{width: cursorSize, height: cursorSize}}
-      className="fixed w-4 h-4 z-20 bg-white rounded-full pointer-events-none" 
+      className="fixed w-4 h-4 z-30 bg-white rounded-full mix-blend-difference pointer-events-none" 
     />
   )
 }

@@ -20,7 +20,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import dynamic from "next/dynamic";
-import { GitHub, LinkedIn } from "@/components/icons/socials";
 const Ripple = dynamic(() => import("../animations/ripple"), {ssr: false});
 
 interface Dimensions {
@@ -99,7 +98,7 @@ export default function Home() {
 
   // LENIS SMOOTHSCROLL
   useEffect(() => {
-    const lenis = new Lenis({smoothTouch: true});
+    const lenis = new Lenis();
 
     function raf(time: number) {
       lenis.raf(time)
@@ -166,14 +165,13 @@ export default function Home() {
       <Header ref={reactiveElement} isActive={isActive} setIsActive={setIsActive}/>
       <Menu isActive={isActive} />
       <ReactiveCursor reactiveElement={reactiveElement}/>
-      <div className="absolute z-0 top-5 left-1/2 -translate-x-1/2 w-[95%] overflow-hidden border border-gray-300 rounded-lg">
+      <div className="absolute z-20 top-5 left-1/2 -translate-x-1/2 w-[95%] overflow-hidden border border-gray-300 rounded-lg">
 
-      {/* <AnimatePresence> */}
-      { dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
-      {/* </AnimatePresence> */}
+      <AnimatePresence>
+      { dimensions.height > 0 && <PixelTransition isActive={isActive}/> }
+      </AnimatePresence>
 
-      {/* <section key={"home"}> */}
-      <div className="relative overflow h-screen w-screen">
+      <div className="relative z-20 overflow h-screen w-screen mix-blend-difference">
         <Suspense fallback={null}>
           <div className="absolute h-[600px] w-[600px] md:h-[900px] md:w-[900px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <Canvas
@@ -190,19 +188,17 @@ export default function Home() {
               dpr = {1}
             />
           </div>
-          <div className= {`pointer-events-none bg-white absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
+          <div className= {`bg-white absolute z-20 w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
             <h1 ref={home.ref} onFocus={home.replay} onMouseOver={home.replay} className="whitespace-nowrap text-5xl md:text-7xl lg:text-8xl"/>
           </div>
         </Suspense>
       </div>
-      {/* </section> */}
 
       <div className="flex flex-col justify-start ">
         <hr className="relative pr-10 left-1/2 -translate-x-1/2 w-[95%] bg-gray-300"/>
       </div>
 
-      {/* <section key={"about"}> */}
-      <div className="z-20 w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center pointer-events-none">
+      <div className="w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center mix-blend-differenceb">
         <div className={`pt-10 w-5/6 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
           <hr className="w-full pb-10" />
           <div className="flex w-full">
@@ -228,14 +224,12 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* </section> */}
 
       <div className="flex flex-col justify-start ">
         <hr className="relative pr-10 left-1/2 -translate-x-1/2 w-[95%] bg-gray-300"/>
       </div>
 
-      {/* <section key={"projects"}> */}
-      <div className="z-20 w-full h-full bg-transparent p-10 flex items-center justify-center pointer-events-none">
+      <div className="w-full h-full bg-transparent p-10 flex items-center justify-center">
         <div className={`pt-10 w-5/6 flex-col items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
 
             <div className="relative -top-10 -left-10 pl-10 pt-2 pb-2 w-2/3">
@@ -243,39 +237,12 @@ export default function Home() {
               <br />
               <hr className="bg-white"/>
             </div>
-          <div className="flex w-full">
+          <div className="flex z-30 w-full">
             <Projects />
           </div>
         </div>
       </div>
-      {/* </section> */}
-
-      <div className="flex flex-col justify-start ">
-        <hr className="relative pr-10 left-1/2 -translate-x-1/2 w-[95%] bg-gray-300"/>
-      </div>
-
-      {/* <section key={"blog"}> */}
-      <div className="z-20 w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center pointer-events-none">
-        <div className={`pt-10 w-5/6 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
-          <hr className="w-full pb-10" />
-          <div className="flex w-full">
-            <div className="w-1/3 flex flex-col space-y-3 md:flex-row md:space-x-3 md:text-2xl">
-              <GitHub />
-              <LinkedIn />
-            </div>
-            <div className="pl-10 pb-2 w-2/3">
-              <p className="relative pb-10 whitespace-normal text-lg md:text-4xl text-white">
-                Subscribe to my newsletter!
-              </p>
-              <input className="w-full" type={"text"}>
-              </input>
-              <br />
-              <hr className="bg-white translate-y-10"/>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
+    </div>
     </main>
   )
 }

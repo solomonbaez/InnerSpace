@@ -29,7 +29,7 @@ const data = [
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(null)
     return (
-        <div className="absolut z-10 w-full">
+        <div className="absolut z-10 w-full mix-blend-difference">
           <Titles data={data} setSelectedProject={setSelectedProject}/>
           {/* <Descriptions data={data} selectedProject={selectedProject}/>         */}
         </div>

@@ -15,7 +15,7 @@ const animate = {
   })
 };
 
-export default function Index({isActive, dimensions}) {
+export default function Index({isActive}) {
   // const [scrollPos, setScrollPos] = useState(0);
   // const handleScroll = () => {
   //   const pos = window.scrollY;
@@ -72,7 +72,7 @@ export default function Index({isActive, dimensions}) {
   }
 
   return (
-    <div className="h-full w-full fixed top-0 left-0 flex z-30 pointer-events-none mix-blend-lighten">
+    <div className="fixed h-[800px] w-[800px] flex z-30 pointer-events-none mix-blend-lighten">
       {
         [...Array(20)].map( (_, index) => {
           return (
