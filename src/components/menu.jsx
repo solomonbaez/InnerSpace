@@ -15,11 +15,11 @@ const animate = {
 export default function Index({isActive}) {
   return (
     <motion.div variants={animate} initial="initial" animate={isActive ? "open" : "exit"}
-      className="h-[90vh] w-full z-20 fixed flex flex-col items-center justify-center uppercase"
+      className="h-[90vh] w-full z-20 fixed flex flex-col items-center justify-center mix-blend-difference uppercase"
     >
-      <p className="text-6xl text-black  m-1 mb-2">Home</p>
-      <p className="text-6xl text-black m-1 mb-2">About</p>
-      <p className="text-6xl text-black m-1 mb-2">Contact</p>
+      <p className="text-6xl text-white m-1 mb-2">Home</p>
+      <p className="text-6xl text-white m-1 mb-2">About</p>
+      <p className="text-6xl text-white m-1 mb-2">Contact</p>
     </motion.div>
   )
 }

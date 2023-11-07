@@ -5,7 +5,7 @@ import { Canvas } from "@react-three/offscreen"
 
 import Header from "@/components/header";
 import Overlay from "@/components/overlay";
-// import Menu from "@/components/menu"
+import Menu from "@/components/menu"
 import PixelTransition from "@/components/pixelTransition";
 import ReactiveCursor from "@/components/reactiveCursor";
 import { GolangSVG, RustSVG, TypeScriptSVG, PythonSVG } from "@/components/icons/langauges";
@@ -42,69 +42,69 @@ export default function Home() {
     }
   }, [])
 
-  // GSAP INITIALIZATION
-  useEffect(() => {
-    const lenis = new Lenis({smoothTouch: true, infinite: true, easing: ((t: number) => 2)});
-    lenis.on("scroll", ScrollTrigger.update)
-
-    function raf(time: number) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    // gsap.ticker.add((time) => {
-    //   lenis.raf(time * 1000);
-    // })
-    // // gsap.ticker.lagSmoothing(0)
-
-    requestAnimationFrame(raf)
-    let sections = gsap.utils.toArray<HTMLElement>("section"),
-      currentSection = sections[0];
-
-    gsap.defaults({overwrite: 'auto', duration: 0.3});
-
-    // stretch out the body height according to however many sections there are. 
-    gsap.set("body", {height: (sections.length * 100) + "%"});
-
-    // create a ScrollTrigger for each section
-    sections.forEach((section, i) => {
-      ScrollTrigger.create({
-        // use dynamic scroll positions based on the window height (offset by half to make it feel natural)
-        start: () => (i - 0.5) * innerHeight,
-        end: () => (i + 0.5) * innerHeight,
-        // when a new section activates (from either direction), set the section accordinglyl.
-        onToggle: self => self.isActive && setSection(section)
-      });
-    });
-
-    function setSection(newSection: HTMLElement) {
-      if (newSection !== currentSection) {
-        gsap.to(currentSection, {scale: 0.8, autoAlpha: 0, ease: "slow(0.7,0.7,false"})
-        gsap.to(newSection, {scale: 1, autoAlpha: 1, ease:"slow(0.7,0.7,false"});
-        currentSection = newSection;
-      }
-    }
-
-    // handles the infinite part, wrapping around at either end....
-    ScrollTrigger.create({
-      start: 1,
-      end: () => ScrollTrigger.maxScroll(window) - 1,
-      onLeaveBack: self => self.scroll(ScrollTrigger.maxScroll(window) - 1),
-      onLeave: self => self.scroll(2)
-    }).scroll(2);
-  }, [])
-
-  // // LENIS SMOOTHSCROLL
+  // // GSAP INITIALIZATION
   // useEffect(() => {
-  //   const lenis = new Lenis();
+  //   const lenis = new Lenis({smoothTouch: true, infinite: true});
+  //   lenis.on("scroll", ScrollTrigger.update)
 
   //   function raf(time: number) {
   //     lenis.raf(time)
   //     requestAnimationFrame(raf)
   //   }
 
+  //   // gsap.ticker.add((time) => {
+  //   //   lenis.raf(time * 1000);
+  //   // })
+  //   // // gsap.ticker.lagSmoothing(0)
+
   //   requestAnimationFrame(raf)
-  // })
+  //   let sections = gsap.utils.toArray<HTMLElement>("section"),
+  //     currentSection = sections[0];
+
+  //   gsap.defaults({overwrite: 'auto', duration: 0.3});
+
+  //   // stretch out the body height according to however many sections there are. 
+  //   gsap.set("body", {height: (sections.length * 100) + "%"});
+
+  //   // create a ScrollTrigger for each section
+  //   sections.forEach((section, i) => {
+  //     ScrollTrigger.create({
+  //       // use dynamic scroll positions based on the window height (offset by half to make it feel natural)
+  //       start: () => (i - 0.5) * innerHeight,
+  //       end: () => (i + 0.5) * innerHeight,
+  //       // when a new section activates (from either direction), set the section accordinglyl.
+  //       onToggle: self => self.isActive && setSection(section)
+  //     });
+  //   });
+
+  //   function setSection(newSection: HTMLElement) {
+  //     if (newSection !== currentSection) {
+  //       gsap.to(currentSection, {scale: 0.8, autoAlpha: 0, ease: "slow(0.7,0.7,false"})
+  //       gsap.to(newSection, {scale: 1, autoAlpha: 1, ease:"slow(0.7,0.7,false"});
+  //       currentSection = newSection;
+  //     }
+  //   }
+
+  //   // handles the infinite part, wrapping around at either end....
+  //   ScrollTrigger.create({
+  //     start: 1,
+  //     end: () => ScrollTrigger.maxScroll(window) - 1,
+  //     onLeaveBack: self => self.scroll(ScrollTrigger.maxScroll(window) - 1),
+  //     onLeave: self => self.scroll(2)
+  //   }).scroll(2);
+  // }, [])
+
+  // LENIS SMOOTHSCROLL
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+  })
 
   // WINDOW RESIZE
   const [dimensions, setDimensions] = useState<Dimensions>({ width: 0, height: 0, dpr: 0 });
@@ -158,16 +158,18 @@ export default function Home() {
 
   return (
     <main>
+
       <Overlay isActive={isActive}/>
       <Header ref={reactiveElement} isActive={isActive} setIsActive={setIsActive}/>
-      {/* <Menu isActive={isActive} /> */}
+      <Menu isActive={isActive} />
       <ReactiveCursor reactiveElement={reactiveElement}/>
+      <div className="absolute z-0 top-5 left-1/2 -translate-x-1/2 w-[95%] overflow-hidden border border-gray-300 rounded-lg">
 
-      <AnimatePresence>
-        { transition && dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
-      </AnimatePresence>
+      {/* <AnimatePresence> */}
+      { transition && dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions} /> }
+      {/* </AnimatePresence> */}
 
-      <section key={"home"}>
+      {/* <section key={"home"}> */}
       <div className="relative overflow-hidden h-screen w-screen">
         <Suspense fallback={null}>
           <div className="absolute h-[600px] w-[600px] md:h-[900px] md:w-[900px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -185,15 +187,19 @@ export default function Home() {
               dpr = {1}
             />
           </div>
-          <div className= {`bg-white absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
+          <div className= {`pointer-events-none bg-white absolute w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mix-blend-difference uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
             <h1 ref={home.ref} onFocus={home.replay} onMouseOver={home.replay} className="whitespace-nowrap text-5xl md:text-7xl lg:text-8xl"/>
           </div>
         </Suspense>
       </div>
-      </section>
-      
-      <section key={"about"}>
-      <div className="z-30 w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center pointer-events-none">
+      {/* </section> */}
+
+      <div className="flex flex-col justify-start ">
+        <hr className="relative pr-10 left-1/2 -translate-x-1/2 w-[95%] bg-gray-300"/>
+      </div>
+
+      {/* <section key={"about"}> */}
+      <div className="z-20 w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center pointer-events-none">
         <div className={`pt-10 w-5/6 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
           <div className="flex w-full">
             <div className="w-1/3 pr-10 flex flex-col space-y-4">
@@ -214,7 +220,45 @@ export default function Home() {
           </div>
         </div>
       </div>
-      </section>
+      {/* </section> */}
+
+      <div className="flex flex-col justify-start ">
+        <hr className="relative pr-10 left-1/2 -translate-x-1/2 w-[95%] bg-gray-300"/>
+      </div>
+
+      {/* <section key={"projects"}> */}
+      <div className="z-20 w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center pointer-events-none">
+        <div className={`pt-10 w-5/6 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
+          <div className="flex w-full">
+            <div className="pl-10 pt-2 pb-2 w-2/3">
+              <p>RECENT PROJECTS</p>
+              <br />
+              <hr className="bg-white"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* </section> */}
+
+      <div className="flex flex-col justify-start ">
+        <hr className="relative pr-10 left-1/2 -translate-x-1/2 w-[95%] bg-gray-300"/>
+      </div>
+
+      {/* <section key={"blog"}> */}
+      <div className="z-30 w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center pointer-events-none">
+        <div className={`pt-10 w-5/6 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
+          <div className="flex w-full">
+            <div className="pl-10 pt-2 pb-2 w-2/3">
+              <p className="absolute left-10 text-red-600 -rotate-45">BLOG COMING SOON</p>
+              <p>Subscribe to my newsletter!!</p>
+              <br />
+              <hr className="bg-white"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* </section> */}
+      </div>
     </main>
   )
 }
