@@ -8,6 +8,8 @@ import Overlay from "@/components/overlay";
 import Menu from "@/components/menu"
 import PixelTransition from "@/components/pixelTransition";
 import ReactiveCursor from "@/components/reactiveCursor";
+import Projects from "@/components/projects"
+
 import { GolangSVG, RustSVG, TypeScriptSVG, PythonSVG } from "@/components/icons/langauges";
 import { AnimatePresence } from "framer-motion";
 import { useScramble } from "use-scramble";
@@ -227,14 +229,16 @@ export default function Home() {
       </div>
 
       {/* <section key={"projects"}> */}
-      <div className="z-20 w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center pointer-events-none">
-        <div className={`pt-10 w-5/6 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
-          <div className="flex w-full">
-            <div className="pl-10 pt-2 pb-2 w-2/3">
+      <div className="z-20 w-screen h-screen bg-transparent p-10 flex items-center justify-center pointer-events-none">
+        <div className={`pt-10 w-5/6 flex-col items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
+
+            <div className="relative -top-10 -left-10 pl-10 pt-2 pb-2 w-2/3">
               <p>RECENT PROJECTS</p>
               <br />
               <hr className="bg-white"/>
             </div>
+          <div className="flex w-full">
+            <Projects />
           </div>
         </div>
       </div>
