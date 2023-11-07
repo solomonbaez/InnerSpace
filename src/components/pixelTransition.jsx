@@ -62,7 +62,7 @@ export default function Index({isActive, dimensions}) {
       const bgColor = getRandomColor();
       return (
         <motion.div key={index}
-          className={`w-full h-[5vw] bg-purple-300`}
+          className={`w-full h-[10vw] bg-purple-300`}
           variants={animate} initial="initial"
           animate={isActive ? "open" : "closed"}
           custom={randomElement}
@@ -76,7 +76,7 @@ export default function Index({isActive, dimensions}) {
       {
         [...Array(20)].map( (_, index) => {
           return (
-            <div key={index} className={`w-[5vw] flex flex-col`}> 
+            <div key={index} className={`w-[10vw] flex flex-col`}> 
               { generateGrid() }
             </div>
           )
