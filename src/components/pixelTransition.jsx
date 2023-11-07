@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const animate = {
   initial: {
@@ -16,19 +16,22 @@ const animate = {
 };
 
 export default function Index({isActive}) {
-  // const [scrollPos, setScrollPos] = useState(0);
-  // const handleScroll = () => {
-  //   const pos = window.scrollY;
-  //   setScrollPos(pos);
-  // }
+  const [scrollPos, setScrollPos] = useState(0);
+  const handleScroll = () => {
+    const pos = window.scrollY;
+    setScrollPos(pos);
+  }
 
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll, {passive: true});
+  useEffect(() => {
+    // restrict overlay movement to active
+    if (isActive) {
+      window.addEventListener("scroll", handleScroll, {passive: true});
 
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, [])
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  })
 
   const shuffle = (a) => {
     var i, r, previous
@@ -55,7 +58,7 @@ export default function Index({isActive}) {
   const generateGrid = () => {
     const { innerWidth, innerHeight} = window;
     const elementSize = innerWidth * 0.05;
-    const elementCount = Math.ceil(innerHeight / elementSize);
+    const elementCount = Math.ceil(innerHeight / elementSize) + 20;
     const shuffled = shuffle([...Array(elementCount)].map( (_, i) => i ))
 
     return shuffled.map( (randomElement, index) => {
@@ -63,6 +66,9 @@ export default function Index({isActive}) {
       return (
         <motion.div key={index}
           className={`w-full h-[5vw] bg-purple-300`}
+          style={{
+            transform: `translateY(${scrollPos}px)`, // Apply the scroll position
+          }}
           variants={animate} initial="initial"
           animate={isActive ? "open" : "closed"}
           custom={randomElement}
@@ -72,16 +78,18 @@ export default function Index({isActive}) {
   }
 
   return (
-    <div className="fixed h-[800px] w-[800px] flex z-30 pointer-events-none mix-blend-lighten">
-      {
-        [...Array(20)].map( (_, index) => {
-          return (
-            <div key={index} className={`w-[5vw] flex flex-col`}> 
-              { generateGrid() }
-            </div>
-          )
-        })
-      }
-    </div>
+    <>
+      <div className={`fixed top-0 ${isActive ? "transition-colors duration-[2500ms] bg-purple-300" : "bg-transparent"} left-0 h-full flex z-30 pointer-events-none mix-blend-difference`}>
+        {
+          [...Array(20)].map( (_, index) => {
+            return (
+              <div key={index} className={`w-[5vw] flex flex-col`}> 
+                { generateGrid() }
+              </div>
+            )
+          })
+        }
+      </div>
+    </>
   )
 }

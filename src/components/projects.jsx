@@ -5,23 +5,27 @@ import Titles from "./titles"
 
 const data = [
     {
-        title: "This Website!",
-        description: "Working on the Next-Generation HMI Experience without no driving experience.",
+        title: "Inner Space",
+        href: "https://github.com/solomonbaez/InnerSpace",
+        description: "This website!",
         speed: 0.5
     },
     {
         title: "Hyacinth",
-        description: "Working on the Next-Generation HMI Experience without no driving experience.",
+        href: "https://github.com/solomonbaez/SB-Go-Newsletter-API",
+        description: "Newsletter API built in Go",
         speed: 0.5
     },
     {
         title: "Acantha",
-        description: "Defined the visual concept and design language for the Lincoln Zephyr 2022 but never seen it in real life.",
+        href: "https://github.com/solomonbaez/hyacinth-newsletter-service",
+        description: "Newsletter API build in Rust",
         speed: 0.67
     },
     {
         title: "Koios",
-        description: "Defined the visual concept and design language for the Lincoln Zephyr 2022 but never seen it in real life.",
+        href: "https://github.com/solomonbaez/koios-framework",
+        description: "Convolutional Neural Network Framework built in Python with NumPy",
         speed: 1
     },
 ]

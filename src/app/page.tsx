@@ -44,59 +44,7 @@ export default function Home() {
     }
   }, [])
 
-  // // GSAP INITIALIZATION
-  // useEffect(() => {
-  //   const lenis = new Lenis({smoothTouch: true, infinite: true});
-  //   lenis.on("scroll", ScrollTrigger.update)
-
-  //   function raf(time: number) {
-  //     lenis.raf(time)
-  //     requestAnimationFrame(raf)
-  //   }
-
-  //   // gsap.ticker.add((time) => {
-  //   //   lenis.raf(time * 1000);
-  //   // })
-  //   // // gsap.ticker.lagSmoothing(0)
-
-  //   requestAnimationFrame(raf)
-  //   let sections = gsap.utils.toArray<HTMLElement>("section"),
-  //     currentSection = sections[0];
-
-  //   gsap.defaults({overwrite: 'auto', duration: 0.3});
-
-  //   // stretch out the body height according to however many sections there are. 
-  //   gsap.set("body", {height: (sections.length * 100) + "%"});
-
-  //   // create a ScrollTrigger for each section
-  //   sections.forEach((section, i) => {
-  //     ScrollTrigger.create({
-  //       // use dynamic scroll positions based on the window height (offset by half to make it feel natural)
-  //       start: () => (i - 0.5) * innerHeight,
-  //       end: () => (i + 0.5) * innerHeight,
-  //       // when a new section activates (from either direction), set the section accordinglyl.
-  //       onToggle: self => self.isActive && setSection(section)
-  //     });
-  //   });
-
-  //   function setSection(newSection: HTMLElement) {
-  //     if (newSection !== currentSection) {
-  //       gsap.to(currentSection, {scale: 0.8, autoAlpha: 0, ease: "slow(0.7,0.7,false"})
-  //       gsap.to(newSection, {scale: 1, autoAlpha: 1, ease:"slow(0.7,0.7,false"});
-  //       currentSection = newSection;
-  //     }
-  //   }
-
-  //   // handles the infinite part, wrapping around at either end....
-  //   ScrollTrigger.create({
-  //     start: 1,
-  //     end: () => ScrollTrigger.maxScroll(window) - 1,
-  //     onLeaveBack: self => self.scroll(ScrollTrigger.maxScroll(window) - 1),
-  //     onLeave: self => self.scroll(2)
-  //   }).scroll(2);
-  // }, [])
-
-  // LENIS SMOOTHSCROLL
+  // SMOOTH SCROLL 
   useEffect(() => {
     const lenis = new Lenis();
 
@@ -126,21 +74,14 @@ export default function Home() {
 
   // MENU TRANSITION
   const [isActive, setIsActive] = useState<boolean>(false);
-  // const [transition, setTransition] = useState<boolean>(false);
-  // useEffect(() => {
-  //   if (isActive) {
-  //     setTransition(isActive)
-  //   } else {
-  //     const transitionTimeout = setTimeout(() => {
-  //       setTransition(isActive)
-  //     }, 900);
-
-  //     return () => {
-  //       clearTimeout(transitionTimeout)
-  //     };
-  //   }
-
-  // }, [isActive, transition])
+  useEffect(() => {
+    if (isActive) {
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  })
 
   // SCRAMBLE EFFECT
   const home = useScramble({
@@ -167,9 +108,7 @@ export default function Home() {
       <ReactiveCursor reactiveElement={reactiveElement}/>
       <div className="absolute z-20 top-5 left-1/2 -translate-x-1/2 w-[95%] overflow-hidden border border-gray-300 rounded-lg">
 
-      <AnimatePresence>
       { dimensions.height > 0 && <PixelTransition isActive={isActive}/> }
-      </AnimatePresence>
 
       <div className="relative z-20 overflow h-screen w-screen mix-blend-difference">
         <Suspense fallback={null}>
@@ -194,7 +133,7 @@ export default function Home() {
         </Suspense>
       </div>
 
-      <div className="flex flex-col justify-start ">
+      <div className={`flex flex-col justify-start ${isActive ? "hidden" : "visible"}`}>
         <hr className="relative pr-10 left-1/2 -translate-x-1/2 w-[95%] bg-gray-300"/>
       </div>
 
@@ -225,7 +164,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col justify-start ">
+      <div className={`flex flex-col justify-start ${isActive ? "hidden" : "visible"}`}>
         <hr className="relative pr-10 left-1/2 -translate-x-1/2 w-[95%] bg-gray-300"/>
       </div>
 

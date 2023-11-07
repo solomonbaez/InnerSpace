@@ -6,7 +6,9 @@ export default function index({data, setSelectedProject}) {
     <div className="w-full border border-t-2 border-gray-300">
         {
             data.map( (project, i) => {
-                return <Title key={i} data={{...project, i}} setSelectedProject={setSelectedProject}/>
+                return (
+                    <Title key={i} data={{...project, i}} setSelectedProject={setSelectedProject}/>
+                )
             })
         }
     </div>
@@ -33,9 +35,12 @@ function Title({data, setSelectedProject}) {
                 onMouseOver={() => {setSelectedProject(i)}}
                 onMouseLeave={() => {setSelectedProject(null)}}
             >
+
+                <a href={data.href} target="_blank" rel="noopener noreferrer">
                 <motion.p className="w-full inline-block uppercase text-[8vw] m-0 relative z-20" style={{clipPath: clip}}>
                     {title}
                 </motion.p>
+                </a>
                 <p>
                     {title}
                 </p>
