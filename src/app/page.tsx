@@ -20,6 +20,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import dynamic from "next/dynamic";
+import { GitHub, LinkedIn } from "@/components/icons/socials";
 const Ripple = dynamic(() => import("../animations/ripple"), {ssr: false});
 
 interface Dimensions {
@@ -234,7 +235,7 @@ export default function Home() {
       </div>
 
       {/* <section key={"projects"}> */}
-      <div className="z-20 w-screen h-screen bg-transparent p-10 flex items-center justify-center pointer-events-none">
+      <div className="z-20 w-full h-full bg-transparent p-10 flex items-center justify-center pointer-events-none">
         <div className={`pt-10 w-5/6 flex-col items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
 
             <div className="relative -top-10 -left-10 pl-10 pt-2 pb-2 w-2/3">
@@ -254,19 +255,26 @@ export default function Home() {
       </div>
 
       {/* <section key={"blog"}> */}
-      <div className="z-30 w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center pointer-events-none">
+      <div className="z-20 w-screen h-screen bg-transparent p-10 inline-flex flex-row items-center justify-center pointer-events-none">
         <div className={`pt-10 w-5/6 flex-row items-center justify-center transition-opacity duration-700 ${isActive ? "opacity-0" : "opacity-300"}`}>
+          <hr className="w-full pb-10" />
           <div className="flex w-full">
-            <div className="pl-10 pt-2 pb-2 w-2/3">
-              <p className="absolute left-10 text-red-600 -rotate-45">BLOG COMING SOON</p>
-              <p>Subscribe to my newsletter!!</p>
+            <div className="w-1/3 flex flex-col space-y-3 md:flex-row md:space-x-3 md:text-2xl">
+              <GitHub />
+              <LinkedIn />
+            </div>
+            <div className="pl-10 pb-2 w-2/3">
+              <p className="relative pb-10 whitespace-normal text-lg md:text-4xl text-white">
+                Subscribe to my newsletter!
+              </p>
+              <input className="w-full" type={"text"}>
+              </input>
               <br />
-              <hr className="bg-white"/>
+              <hr className="bg-white translate-y-10"/>
             </div>
           </div>
         </div>
       </div>
-      {/* </section> */}
       </div>
     </main>
   )
