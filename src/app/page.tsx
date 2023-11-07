@@ -98,7 +98,7 @@ export default function Home() {
 
   // LENIS SMOOTHSCROLL
   useEffect(() => {
-    const lenis = new Lenis();
+    const lenis = new Lenis({smoothTouch: true});
 
     function raf(time: number) {
       lenis.raf(time)

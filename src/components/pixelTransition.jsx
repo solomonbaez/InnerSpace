@@ -55,14 +55,14 @@ export default function Index({isActive, dimensions}) {
   const generateGrid = () => {
     const { innerWidth, innerHeight} = window;
     const elementSize = innerWidth * 0.05;
-    const elementCount = Math.ceil(innerHeight / elementSize) * 4;
+    const elementCount = Math.ceil(innerHeight / elementSize);
     const shuffled = shuffle([...Array(elementCount)].map( (_, i) => i ))
 
     return shuffled.map( (randomElement, index) => {
       const bgColor = getRandomColor();
       return (
         <motion.div key={index}
-          className={`w-full h-[10vw] bg-purple-300`}
+          className={`w-full h-[5vw] bg-purple-300`}
           variants={animate} initial="initial"
           animate={isActive ? "open" : "closed"}
           custom={randomElement}
@@ -76,7 +76,7 @@ export default function Index({isActive, dimensions}) {
       {
         [...Array(20)].map( (_, index) => {
           return (
-            <div key={index} className={`w-[10vw] flex flex-col`}> 
+            <div key={index} className={`w-[5vw] flex flex-col`}> 
               { generateGrid() }
             </div>
           )
