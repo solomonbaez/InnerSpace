@@ -108,7 +108,7 @@ export default function Home() {
       <ReactiveCursor reactiveElement={reactiveElement}/>
       <div className="absolute z-20 top-5 left-1/2 -translate-x-1/2 w-[95%] overflow-hidden border border-gray-300 rounded-lg">
 
-      { dimensions.height > 0 && <PixelTransition isActive={isActive}/> }
+      { dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions}/> }
 
       <div className="relative z-20 overflow h-screen w-screen mix-blend-difference">
         <Suspense fallback={null}>

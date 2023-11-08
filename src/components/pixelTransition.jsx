@@ -15,7 +15,7 @@ const animate = {
   })
 };
 
-export default function Index({isActive}) {
+export default function Index({isActive, dimensions}) {
   const [scrollPos, setScrollPos] = useState(0);
   const handleScroll = () => {
     const pos = window.scrollY;
@@ -32,6 +32,15 @@ export default function Index({isActive}) {
       };
     }
   })
+
+  const [desktop, setDesktop] = useState(false);
+  useEffect(() => {
+    if (dimensions.innerWidth > 640) {
+      setDesktop(true);
+    } else {
+      setDesktop(false);
+    }
+  }, [dimensions.innerWidth, setDesktop])
 
   const shuffle = (a) => {
     var i, r, previous
@@ -57,15 +66,15 @@ export default function Index({isActive}) {
 
   const generateGrid = () => {
     const { innerWidth, innerHeight} = window;
-    const elementSize = innerWidth * 0.05;
-    const elementCount = Math.ceil(innerHeight / elementSize) + 20;
+    const elementSize = desktop ? (innerWidth * 0.1) : (innerWidth * 0.05);
+    const elementCount = Math.ceil(innerHeight / elementSize);
     const shuffled = shuffle([...Array(elementCount)].map( (_, i) => i ))
 
     return shuffled.map( (randomElement, index) => {
       const bgColor = getRandomColor();
       return (
         <motion.div key={index}
-          className={`w-full h-[5vw] bg-purple-300`}
+          className={`w-full bg-purple-300 ${desktop ? "h-[5vw]" : "h-[10vw]"}`}
           style={{
             transform: `translateY(${scrollPos}px)`, // Apply the scroll position
           }}
@@ -81,9 +90,9 @@ export default function Index({isActive}) {
     <>
       <div className={`fixed top-0 ${isActive ? "transition-colors duration-[2500ms] bg-purple-300" : "bg-transparent"} left-0 h-full flex z-30 pointer-events-none mix-blend-difference`}>
         {
-          [...Array(20)].map( (_, index) => {
+          [...Array(desktop ? 20 : 10)].map( (_, index) => {
             return (
-              <div key={index} className={`w-[5vw] flex flex-col`}> 
+              <div key={index} className={`flex flex-col ${desktop ? "w-[5vw]" : "w-[10vw]"}`}> 
                 { generateGrid() }
               </div>
             )
