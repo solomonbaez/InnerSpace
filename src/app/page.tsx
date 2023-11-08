@@ -98,7 +98,7 @@ export default function Home() {
       <Header ref={reactiveElement} isActive={isActive} setIsActive={setIsActive}/>
       <Menu isActive={isActive} />
       <ReactiveCursor reactiveElement={reactiveElement}/>
-      <div className="absolute z-20 top-5 left-1/2 -translate-x-1/2 w-[95%] overflow-hidden border border-gray-300">
+      <div className="absolute z-20 top-5 left-1/2 -translate-x-1/2 w-[95%] overflow-hidden border border-gray-300 rounded-lg">
 
       { dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions}/> }
 
