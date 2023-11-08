@@ -33,8 +33,9 @@ export default function Index({isActive}) {
                 <p className="pb-10 whitespace-normal text-sm md:text-5xl text-white">
                   Subscribe to my newsletter!
                 </p>
-                <input className="w-full text-black" type={"text"}>
+                <input className="w-full outline-none text-center text-black" type={"text"}>
                 </input>
+                <button className="w-full hover:bg-red-500 hover:text-black bg-black text-white">🂠 confirm 🂡</button>
                 <br />
                 <hr className="bg-white translate-y-10 md:translate-y-20"/>
                 <br />
