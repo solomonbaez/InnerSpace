@@ -102,7 +102,7 @@ export default function Home() {
 
       { dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions}/> }
 
-      <div className="relative z-20 overflow h-screen w-screen mix-blend-difference">
+      <div className="relative z-20 overflow-hidden h-screen w-screen mix-blend-difference">
         <Suspense fallback={null}>
           <div className="absolute h-[600px] w-[600px] md:h-[900px] md:w-[900px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <Canvas
