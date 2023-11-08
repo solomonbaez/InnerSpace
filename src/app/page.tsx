@@ -74,14 +74,6 @@ export default function Home() {
 
   // MENU TRANSITION
   const [isActive, setIsActive] = useState<boolean>(false);
-  useEffect(() => {
-    if (isActive) {
-      document.body.style.overflow = "hidden";
-      document.body.style.height = "100";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  })
 
   // SCRAMBLE EFFECT
   const home = useScramble({
