@@ -88,7 +88,7 @@ export default function Index({isActive, dimensions}) {
 
   return (
     <>
-      <div className={`fixed top-0 ${isActive ? "transition-colors duration-[2500ms] bg-purple-300" : "bg-transparent"} left-0 h-full flex z-30 pointer-events-none mix-blend-difference`}>
+      <div className={`fixed top-0 ${isActive ? "transition-colors duration-[2500ms] rounded-full bg-purple-300" : "bg-transparent"} left-0 h-full flex z-30 pointer-events-none mix-blend-difference`}>
         {
           [...Array(desktop ? 20 : 10)].map( (_, index) => {
             return (
