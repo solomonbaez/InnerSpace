@@ -136,15 +136,19 @@ export default function Home() {
             <div className="w-1/3 flex flex-col space-y-3 md:text-2xl">
               <p>
                 Go
+                { dimensions.width <= 640 && <br /> }
                 <small> - 1.5y</small>
               </p>
               <p>TS
+                { dimensions.width <= 640 && <br /> }
                 <small> - 1.5y</small>
               </p>
               <p>Rust 
+                { dimensions.width <= 640 && <br /> }
                 <small> - 1y</small>
               </p>
               <p>Python 
+                { dimensions.width <= 640 && <br /> }
                 <small> - 4y</small>
               </p>
             </div>
