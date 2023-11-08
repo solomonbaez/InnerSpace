@@ -30,7 +30,7 @@ export default function Index({isActive}) {
                 <a href={"https://www.linkedin.com/in/solomonbaez"} target="_blank" rel="noopener noreferrer"><LinkedIn /></a> 
               </div>
               <div className="pl-10 pb-2 w-2/3">
-                <p className="pb-10 whitespace-normal md:text-5xl text-white">
+                <p className="pb-10 whitespace-normal text-sm md:text-5xl text-white">
                   Subscribe to my newsletter!
                 </p>
                 <input className="w-full text-black" type={"text"}>
