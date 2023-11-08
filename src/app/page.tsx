@@ -98,13 +98,13 @@ export default function Home() {
       <Header ref={reactiveElement} isActive={isActive} setIsActive={setIsActive}/>
       <Menu isActive={isActive} />
       <ReactiveCursor reactiveElement={reactiveElement}/>
-      <div className="absolute z-20 top-5 left-1/2 -translate-x-1/2 w-[95%] overflow-hidden border border-gray-300 rounded-lg">
+      <div className="absolute z-20 top-5 left-1/2 -translate-x-1/2 w-[95%] overflow-hidden border border-gray-300">
 
       { dimensions.height > 0 && <PixelTransition isActive={isActive} dimensions={dimensions}/> }
 
       <div className="relative z-20 overflow-hidden h-screen w-screen mix-blend-difference">
         <Suspense fallback={null}>
-          <div className="absolute h-[600px] w-[600px] md:h-[900px] md:w-[900px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute h-[500px] w-[500px] md:h-[900px] md:w-[900px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <Canvas
               resize={{scroll: false, debounce:{scroll: 1, resize: 1}}}
               worker={worker!} 
