@@ -31,11 +31,11 @@ export default function Index({isActive}) {
       });
 
       if (response.ok) {
-        console.log(response)
+        console.log(await response.json());
         console.log('Subscription successful!');
         setSubscriptionResult("Success!")
       } else {
-        console.log(response)
+        console.log(await response.json());
         console.error('Subscription failed.');
         setSubscriptionResult("Failed!")
       }
