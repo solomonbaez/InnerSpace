@@ -26,6 +26,7 @@ export default function Index({isActive}) {
     if (!emailRegex.test(email)) {
         console.log('Invalid email format');
         setSubscriptionResult("Failed! Invalid email format.")
+        return
     }
 
     try {
