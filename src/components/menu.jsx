@@ -20,8 +20,9 @@ export default function Index({isActive}) {
   const [subscriptionResult, setSubscriptionResult] = useState('');
 
   const handleSubscribe = async () => {
+    backendURL = process.env.GO_URL;
     try {
-      const response = await fetch(process.env.GO_URL, {
+      const response = await fetch(backendURL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,9 +31,11 @@ export default function Index({isActive}) {
       });
 
       if (response.ok) {
+        console.log(response)
         console.log('Subscription successful!');
         setSubscriptionResult("Success!")
       } else {
+        console.log(response)
         console.error('Subscription failed.');
         setSubscriptionResult("Failed!")
       }
