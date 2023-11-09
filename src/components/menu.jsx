@@ -20,7 +20,7 @@ export default function Index({isActive}) {
   const [subscriptionResult, setSubscriptionResult] = useState('');
 
   const handleSubscribe = async () => {
-    const backendURL = process.env.GO_URL;
+    const backendURL = "https://innerspace-newsletter-production.up.railway.app/subscribe";
     try {
       const response = await fetch(backendURL, {
         method: 'POST',
