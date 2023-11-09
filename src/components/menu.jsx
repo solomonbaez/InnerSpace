@@ -21,12 +21,12 @@ export default function Index({isActive}) {
 
   const handleSubscribe = async () => {
     try {
-      const response = await fetch(process.env.GO_URL + "/subscribe", {
+      const response = await fetch(process.env.GO_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ "email": email, "name": "newUser"}),
       });
 
       if (response.ok) {
