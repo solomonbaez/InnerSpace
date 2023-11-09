@@ -42,7 +42,9 @@ export default function Index({isActive}) {
   };
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+    if (isActive) {
+      setEmail(e.target.value);
+    }
   };
 
   return (
@@ -64,7 +66,7 @@ export default function Index({isActive}) {
                   Subscribe to my newsletter!
                 </p>
                 <input
-                  className="w-full outline-none text-center text-white"
+                  className="w-full outline-none text-center text-red-500"
                   type="text"
                   placeholder="Enter your email"
                   value={email}
