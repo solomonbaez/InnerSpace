@@ -20,7 +20,7 @@ export default function Index({isActive}) {
   const [subscriptionResult, setSubscriptionResult] = useState('');
 
   const handleSubscribe = async () => {
-    backendURL = process.env.GO_URL;
+    const backendURL = process.env.GO_URL;
     try {
       const response = await fetch(backendURL, {
         method: 'POST',
