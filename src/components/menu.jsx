@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { GitHub, LinkedIn } from "@/components/icons/socials";
 
@@ -15,6 +16,35 @@ const animate = {
 }
 
 export default function Index({isActive}) {
+  const [email, setEmail] = useState('');
+  const [subscriptionResult, setSubscriptionResult] = useState('');
+
+  const handleSubscribe = async () => {
+    try {
+      const response = await fetch(process.env.GO_URL + "/subscribe", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        console.log('Subscription successful!');
+        setSubscriptionResult("Success!")
+      } else {
+        console.error('Subscription failed.');
+        setSubscriptionResult("Failed!")
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
   return (
     <>
     { isActive &&
@@ -33,11 +63,30 @@ export default function Index({isActive}) {
                 <p className="pb-10 whitespace-normal text-sm md:text-5xl text-white">
                   Subscribe to my newsletter!
                 </p>
-                <input className="w-full outline-none text-center text-black" type={"text"}>
-                </input>
-                <button className="w-full hover:bg-red-500 hover:text-black bg-black text-white">🂠 confirm 🂡</button>
+                <input
+                  className="w-full outline-none text-center text-white"
+                  type="text"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+                <button
+                  className="w-full hover:bg-red-500 on hover:text-black bg-black text-white"
+                  onClick={handleSubscribe}
+                >
+                  🂠 confirm 🂡
+                </button>
                 <br />
                 <hr className="bg-white translate-y-10 md:translate-y-20"/>
+                {subscriptionResult && (
+                  <>
+                  <br />
+                  <br />
+                  <p className={subscriptionResult.includes('failed') ? 'text-red-500 uppercase' : 'text-green-500 uppercase'}>
+                    {subscriptionResult}
+                  </p>
+                  </>
+                )}
                 <br />
                 <br />
                 <small className="translate-y-10 text-xs md:translate-y-20">!BLOG COMING SOON!</small>
