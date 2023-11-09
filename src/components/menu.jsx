@@ -21,6 +21,13 @@ export default function Index({isActive}) {
 
   const handleSubscribe = async () => {
     const backendURL = "https://innerspace-newsletter-production.up.railway.app/subscribe";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+        console.log('Invalid email format');
+        setSubscriptionResult("Failed! Invalid email format.")
+    }
+
     try {
       const response = await fetch(backendURL, {
         method: 'POST',
