@@ -119,7 +119,7 @@ export default function Home() {
               dpr = {1}
             />
           </div>
-          <div className= {`bg-white absolute z-20 w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
+          <div className= {`bg-white mix-blend-difference absolute z-20 w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 uppercase text-black ${isActive ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}>
             <h1 ref={home.ref} onFocus={home.replay} onMouseOver={home.replay} className="whitespace-nowrap text-5xl md:text-7xl lg:text-8xl"/>
           </div>
         </Suspense>

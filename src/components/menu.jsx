@@ -68,23 +68,23 @@ export default function Index({isActive}) {
           <div className="pt-10 w-5/6 md:w-11/12 flex-row items-center justify-center">
             <hr className="w-full pb-10" />
             <div className="flex w-full">
-              <div className="relative z-30 w-1/3 flex flex-col space-y-3">
+              <div className="absolute items-center justify-center left-1/2 -translate-x-1/2 md:left-0 md:-translate-x-0 md:relative md:w-1/3 z-30 bottom-4 md:bottom-0 w-full flex flex-row md:flex-col space-x-10 md:space-x-0">
                 <a href={"https://www.github.com/solomonbaez"} target="_blank" rel="noopener noreferrer"><GitHub /></a> 
                 <a href={"https://www.linkedin.com/in/solomonbaez"} target="_blank" rel="noopener noreferrer"><LinkedIn /></a> 
               </div>
-              <div className="pl-10 pb-2 w-2/3">
+              <div className="pb-2 w-full md:w-2/3">
                 <p className="pb-10 whitespace-normal text-sm md:text-5xl text-white">
                   Subscribe to my newsletter!
                 </p>
                 <input
-                  className="w-full outline-none text-center text-red-500"
+                  className="w-full outline-none rounded-none text-center text-red-500"
                   type="text"
                   placeholder="Enter your email"
                   value={email}
                   onChange={handleEmailChange}
                 />
                 <button
-                  className="w-full hover:bg-red-500 on hover:text-black bg-black text-white"
+                  className="w-full hover:bg-red-500 rounded-none hover:text-black bg-black text-white"
                   onClick={handleSubscribe}
                 >
                   🂠 confirm 🂡

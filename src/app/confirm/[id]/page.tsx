@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import { GitHub, LinkedIn } from "@/components/icons/socials";
 
 export default function Confirm() {

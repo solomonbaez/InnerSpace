@@ -88,7 +88,7 @@ export default function Index({isActive, dimensions}) {
 
   return (
     <>
-      <div className={`fixed top-0 left-0 h-full w-full flex z-30 pointer-events-none mix-blend-lighten ${isActive ? "transition-colors duration-[2500ms] rounded-lg overflow-hidden bg-purple-300" : "bg-transparent"}`}>
+      <div className={`fixed top-0 left-0 h-full w-full flex z-30 pointer-events-none mix-blend-difference ${isActive ? "transition-colors duration-[2500ms] rounded-lg overflow-hidden bg-purple-300" : "bg-transparent"}`}>
         {
           [...Array(desktop ? 20 : 10)].map( (_, index) => {
             return (
