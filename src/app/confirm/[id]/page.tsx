@@ -15,7 +15,7 @@ export default function Confirm() {
     const fetchData = async () => {
       try {
         if (id) {
-          const response = await fetch(`your-backend-endpoint/${id}`);
+          const response = await fetch(backendURL);
           const data = await response.json();
 
           // Assuming your backend sends a property like 'subscriber' in the response
