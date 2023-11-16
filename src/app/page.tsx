@@ -9,9 +9,6 @@ import Menu from "@/components/menu"
 import PixelTransition from "@/components/pixelTransition";
 import ReactiveCursor from "@/components/reactiveCursor";
 import Projects from "@/components/projects"
-
-import { GolangSVG, RustSVG, TypeScriptSVG, PythonSVG } from "@/components/icons/langauges";
-import { AnimatePresence } from "framer-motion";
 import { useScramble } from "use-scramble";
 import Lenis from "@studio-freight/lenis";
 

@@ -12,19 +12,19 @@ const data = [
     },
     {
         title: "Hyacinth",
-        href: "https://github.com/solomonbaez/SB-Go-Newsletter-API",
+        href: "https://github.com/solomonbaez/hyacinth",
         description: "Newsletter API built in Go",
         speed: 0.5
     },
     {
         title: "Acantha",
-        href: "https://github.com/solomonbaez/hyacinth-newsletter-service",
+        href: "https://github.com/solomonbaez/acantha",
         description: "Newsletter API build in Rust",
         speed: 0.67
     },
     {
         title: "Koios",
-        href: "https://github.com/solomonbaez/koios-framework",
+        href: "https://github.com/solomonbaez/koios",
         description: "Convolutional Neural Network Framework built in Python with NumPy",
         speed: 1
     },
