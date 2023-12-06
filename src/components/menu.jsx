@@ -20,7 +20,7 @@ export default function Index({isActive}) {
   const [subscriptionResult, setSubscriptionResult] = useState('');
 
   const handleSubscribe = async () => {
-    const backendURL = "https://innerspace-newsletter-production.up.railway.app/subscribe";
+    const backendURL = process.env.SUBSCRIBE_URL
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
