@@ -20,7 +20,7 @@ export default function Index({isActive}) {
   const [subscriptionResult, setSubscriptionResult] = useState('');
 
   const handleSubscribe = async () => {
-    const backendURL = process.env.NEXT_PUBLIC_SUBSCRIBE_URL
+    const backendURL = process.env.NEXT_PUBLIC_SUBSCRIBE_URL;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
