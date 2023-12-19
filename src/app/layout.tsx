@@ -1,6 +1,7 @@
-import type { Metadata } from 'next'
-import { GeistMono } from 'geist/font'
-import './globals.css'
+import type { Metadata } from 'next';
+import { GeistMono } from 'geist/font';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Inner Space',
@@ -19,9 +20,10 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body style={{overflow: "scroll"}} className={GeistMono.className}>
-        {children}
-      </body>
+        <body style={{overflow: "scroll"}} className={GeistMono.className}>
+          {children}
+          <SpeedInsights />
+        </body>
     </html>
   )
 }

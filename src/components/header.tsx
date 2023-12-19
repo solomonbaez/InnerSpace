@@ -12,7 +12,7 @@ const Header = forwardRef<HTMLButtonElement, HeaderProps>(function Index(props: 
 
     return (
       <button ref={ref}
-      className="fixed top-5 right-5 w-20 z-40 h-10 p-10 mix-blend-difference inline-flex flex-col justify-start items-center "
+      className="fixed top-5 right-5 md:right-[2.6vw] w-20 z-40 h-10 p-10 mix-blend-difference inline-flex flex-col justify-start items-center "
       onClick={() => setIsActive(!isActive)}
       >
         <div className='flex flex-row items-center justify-end'>
@@ -27,4 +27,3 @@ const Header = forwardRef<HTMLButtonElement, HeaderProps>(function Index(props: 
 })
 
 export default Header;
-  
